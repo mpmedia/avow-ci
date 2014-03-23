@@ -94,7 +94,10 @@ define([], function () {
 
     // Match root
     if (fragment === '/' && self.routes.hasOwnProperty('/')) {
-      matched = { route: '/', args: null };
+      matched = {
+        route: '/',
+        args: null
+      };
     } else {
       // Match routes
       for (route in self.routes) {
@@ -117,7 +120,10 @@ define([], function () {
 
     if (!matched) {
       if (self.routes.hasOwnProperty('/404')) {
-        matched = { route: '/404', args: [fragment] };
+        matched = {
+          route: '/404',
+          args: [fragment]
+        };
       }
     }
 
