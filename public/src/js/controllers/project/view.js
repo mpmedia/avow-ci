@@ -33,7 +33,7 @@ define([
       this.branch(null);
       // Get list
       var req = request({
-        url: '/api/project/'+name
+        url: '/api/project/' + name
       });
 
       req.done(function (data) {
