@@ -31,8 +31,6 @@ define([], function () {
       prevRoute = false,
       routeObj = [];
 
-    console.log('matched', match);
-
     // Get prev_route
     if (self.history.length !== 0) {
       prevRoute = self.routes[self.history[self.history.length - 1].matcher];
