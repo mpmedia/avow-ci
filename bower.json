@@ -1,0 +1,10 @@
+{
+  "name": "avowjs",
+  "version": "0.0.1",
+  "dependencies": {
+    "requirejs": "~2.1.8",
+    "requirejs-text": "~2.0.0",
+    "knockout.js": "2.3.0",
+    "jquery": "2.0.1"
+  }
+}
