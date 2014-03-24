@@ -1,17 +1,23 @@
 <h2>Project Config</h2>
 
 <form>
-    
+
     <label>Name</label>
     <input data-bind="value: name">
-    
+
     <label>Repo</label>
-    <input data-bind="value: repo">
-    
+    <input data-bind="value: repo, valueUpdate: 'afterkeydown'">
+
     <label>Branch</label>
+    <!-- ko if: availableBranches().length -->
+    <select data-bind="options: availableBranches"></select>
+    <!-- /ko -->
+
+    <!-- ko ifnot: availableBranches().length -->
     <input data-bind="value: branch">
-    
+    <!-- /ko -->
+
     <button class="btn-left">Save</button>
     <button class="btn-right">Delete</button>
-    
+
 </form>
