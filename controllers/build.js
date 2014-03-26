@@ -75,6 +75,7 @@ module.exports = {
             // Start runner with data
             runner.go({
               project: projectData[0],
+              projectDB: self.data.projects,
               build: data[0],
               buildDB: self.data.builds,
               buildSocket: self.sockets.builds

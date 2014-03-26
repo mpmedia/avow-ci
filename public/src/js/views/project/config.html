@@ -10,7 +10,9 @@
 
     <label>Branch</label>
     <!-- ko if: availableBranches().length -->
-    <select data-bind="options: availableBranches, value: branch, valueAllowUnset: true"></select>
+    <div class="select">
+        <select data-bind="options: availableBranches, value: branch, valueAllowUnset: true"></select>
+    </div>
     <!-- /ko -->
 
     <!-- ko ifnot: availableBranches().length -->

@@ -5,6 +5,7 @@ module.exports = {
   name: 'slug',
   repo: 'string',
   branch: 'string',
-  status: 'string'
+  latest_build: 'string',
+  status: 'number'
 
 };

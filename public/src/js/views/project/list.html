@@ -11,8 +11,15 @@
     <!-- ko if: projects().length -->
     <tbody data-bind="foreach: projects">
         <tr>
-            <td>
-                <i class="fa fa-dot-circle-o"></i>
+            <td data-bind="attr: { class: statusClass }">
+                <!-- ko if: latestBuildURL -->
+                <a data-bind="attr: { href: latestBuildURL }">
+                    <i class="fa fa-circle"></i>
+                </a>
+                <!-- /ko -->
+                <!-- ko ifnot: latestBuildURL -->
+                <i class="fa fa-circle"></i>
+                <!-- /ko -->
             </td>
             <td>
                 <a data-bind="attr: { href: url }">

@@ -6,9 +6,11 @@ var runner = {
 
   // Kicks off build runner
   go: function (data) {
-    // Get repo and branch from project data
+    // Get project data
     this.repo = data.project.repo;
     this.branch = data.project.branch;
+    this.project_id = data.project._id;
+    this.projectData = data.projectDB;
     // Will store temp directory
     this.temp = null;
     // Will store config
@@ -19,6 +21,8 @@ var runner = {
     this.buildData = data.buildDB;
     // Set sockets
     this.buildSocket = data.buildSocket;
+    // Set project status
+    this.updateProjectStatus(2);
     // Kickoff build
     this.run();
   },
@@ -65,9 +69,11 @@ var runner = {
       if (err) {
         console.log(err);
         self.updateBuildData({ end: end, status: 1 });
+        self.updateProjectStatus(1);
       } else {
         // Log end of build
         self.updateBuildData({ end: + end, status: 0 });
+        self.updateProjectStatus(0);
       }
     });
   },
@@ -78,6 +84,28 @@ var runner = {
       if (err) {
         console.log(err);
       }
+    });
+  },
+
+  // Updates project status
+  updateProjectStatus: function (status) {
+    var self = this;
+    this.projectData.update({ '_id': this.project_id.toString() }, { 'status': status, 'latest_build': this.build.toString() }, function (err, data) {
+      // Emit sockets update
+      self.emitUpdate(status);
+      // Output error
+      if (err) {
+        console.log(err);
+      }
+    });
+  },
+
+  // Emit update to /api/builds/ socket namespace
+  emitUpdate: function (status) {
+    this.buildSocket.emit('update', {
+      id: this.build.toString(),
+      project_id: this.project_id.toString(),
+      status: status
     });
   }
 

@@ -91,8 +91,9 @@
 
     label { display: block; margin: 10px 0 10px 0; font-size: 1.2em; font-weight: bold; }
 
-    input, select, textarea {
+    input, select, .select, textarea {
         display: block;
+        position: relative;
         width: 100%;
         margin: 5px 0 15px 0;
         padding: 5px 10px;
@@ -102,11 +103,44 @@
         background-image: -moz-linear-gradient(center bottom, rgb(250,250,250) 25%, rgb(255,255,255) 75%);
         border: 1px solid #ccc;
         border-radius: 4px;
+        -webkit-appearance: none;
+    }
+
+    .select {
+        display: block;
+        position: relative;
+        width: 100%;
+        padding: 0;
+        overflow: hidden;
+    }
+
+    .select select {
+        width: 120%;
+        margin: 0;
+        border: none;
+        background: transparent;
+    }
+
+    .select:after {
+        position: absolute;
+        content: "";
+        top: 12px;
+        right: 15px;
+        width: 0;
+        height: 0;
+        border-right: 10px solid transparent;
+        border-left: 10px solid transparent;
+        border-top: 12px solid #999;
+        transition: .3s border;
+    }
+
+    .select:hover:after {
+        border-top: 12px solid #000;
     }
 
     textarea { font-family: Arial, Helvetica, sans-serif; min-height: 150px; }
 
-    input:focus, select:focus, textarea:focus{
+    input:focus, textarea:focus{
         border: 1px solid #999; outline: none;
     }
 
@@ -277,6 +311,22 @@
         display: block;
         padding: 15px;
         text-align: center;
+    }
+
+    .project-status--none i {
+        color: #666;
+    }
+
+    .project-status--pass i {
+        color: #0fad4b;
+    }
+
+    .project-status--fail i {
+        color: #e31818;
+    }
+
+    .project-status--pending i {
+        color: #ffb400;
     }
 
 /* PROJECT VIEW */
