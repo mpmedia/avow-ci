@@ -4,9 +4,7 @@ define([
   'router',
   'request',
   'dom'
-], function (ko, session, Router, request, dom) {
-
-  var router = new Router();
+], function (ko, session, router, request, dom) {
 
   var login = {
 

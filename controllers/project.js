@@ -63,7 +63,11 @@ module.exports = {
         self.data.projects.update({
           '_id': req.params[0]
         }, req.body, function (err, data) {
-          self.sendResponse(res, err, data);
+          if (err) {
+            self.sendResponse(res, err, data);
+          } else {
+            self.sendResponse(res, err, data);
+          }
         });
       }
     });

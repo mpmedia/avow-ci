@@ -4,9 +4,7 @@ define([
   'router',
   'request',
   'dom'
-], function (ko, session, Router, request, dom) {
-
-  var router = new Router();
+], function (ko, session, router, request, dom) {
 
   var list = {
 
@@ -27,6 +25,7 @@ define([
     },
 
     load: function (name) {
+      var self = this;
       // Clear out projects
       this.name(null);
       this.repo(null);
@@ -36,13 +35,19 @@ define([
         url: '/api/project/' + name
       });
 
-      req.done(function (data) {
-        console.log(data);
+      req.done(function (project) {
+        self.name(project.data[0].name);
+        self.repo(project.data[0].repo);
+        self.branch(project.data[0].branch);
       });
 
       req.fail(function () {
         dom.notification('error', 'Problem loading data');
       });
+    },
+
+    config: function () {
+      router.go('/projects/' + this.name() + '/config');
     }
 
   };

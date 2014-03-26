@@ -3,8 +3,8 @@ module.exports = {
 
   _id: 'string',
   name: 'slug',
-  repo: 'url',
-  branch: 'alphanum',
+  repo: 'string',
+  branch: 'string',
   status: 'string'
 
 };

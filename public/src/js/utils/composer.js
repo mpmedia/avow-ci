@@ -2,12 +2,10 @@ define([
   'router',
   'knockout',
   'dom'
-], function (Router, ko, dom) {
+], function (router, ko, dom) {
 
   var count = 0;
   var loaded = 0;
-
-  var router = new Router();
 
   var controllers = [];
 
@@ -27,9 +25,10 @@ define([
 
       // Build load handler
       var loadView = function (view, controller, args, load) {
+        var el = document.getElementById('viewContainer');
         dom.renderView(view);
-        ko.cleanNode(document.getElementById('viewContainer'));
-        ko.applyBindings(controller, document.getElementById('viewContainer'));
+        ko.cleanNode(el);
+        ko.applyBindings(controller, el);
         if (load) {
           controller.load.apply(controller, args);
         }
@@ -54,7 +53,7 @@ define([
 
       // Create unload handler
       if (controller.hasOwnProperty('unload')) {
-        routeHandler.unload = controller.unload;
+        routeHandler.unload = controller.unload.bind(controller);
       }
 
       // Create route

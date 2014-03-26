@@ -234,8 +234,28 @@
 
 /* HEADER/APP */
 
-    .app-logout {
+    .app-nav {
+        display: block;
         float: right;
+        margin: 0;
+        padding: 0;
+    }
+
+    .app-nav li {
+        display: inline-block;
+        margin: 0;
+        padding: 0;
+        list-style: none;
+    }
+
+    .app-nav li a {
+        display: inline-block;
+        padding: 3px 10px;
+        border-left: 1px solid #ccc;
+    }
+
+    .app-nav li:first-of-type a {
+        border-left: none;
     }
 
 /* PROJECT LIST */
@@ -257,4 +277,10 @@
         display: block;
         padding: 15px;
         text-align: center;
+    }
+
+/* PROJECT VIEW */
+
+    .project-view-config {
+        float: right;
     }

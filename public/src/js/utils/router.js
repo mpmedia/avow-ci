@@ -24,12 +24,18 @@ define([], function () {
   // Processes route change
   Router.prototype.process = function () {
     var self = this,
-      fragment = window.location.hash.replace('#', ''),
-      match = self.match(),
-      route = match.route,
-      args = match.args,
+      fragment = window.location.hash.replace('#', '').replace(/^\/|\/$/g, ''),
+      match,
+      route,
+      args,
       prevRoute = false,
       routeObj = [];
+
+    fragment = (fragment.substr(0) !== '/') ? '/' + fragment : fragment;
+
+    match = self.match();
+    route = match.route;
+    args = match.args;
 
     // Get prev_route
     if (self.history.length !== 0) {
@@ -100,7 +106,7 @@ define([], function () {
       // Match routes
       for (route in self.routes) {
         matcher = fragment.match(new RegExp(route.replace(/:[^\s/]+/g, '([\\w-]+)')));
-        if (matcher !== null && route !== '/') {
+        if (matcher !== null && matcher[0] === fragment) {
           args = [];
           // Get args
           if (matcher.length > 1) {
@@ -181,6 +187,8 @@ define([], function () {
     }
   };
 
-  return Router;
+  var router = new Router();
+
+  return router;
 
 });

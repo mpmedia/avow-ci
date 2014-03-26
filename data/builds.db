@@ -1,0 +1,3 @@
+{"project_id":"auF8XHu8yw5IHRLK","start":1395794042030,"_id":"JE1ZS6qAVtW4l52h"}
+{"commit":{"repo":{"path":"/home/fluidbyte/projects/avowjs/components../../temp/1395794042033","dot_git":"/home/fluidbyte/projects/avowjs/components../../temp/1395794042033/.git"},"id":"ddbea29e349940c095fe551c5265f941e59875d8","author":{"name":"Kent Safranski","email":"kent@fluidbyte.net","hash":"a1120428141076c608dad49025c7d2ac"},"authored_date":{"$$date":1395792527000},"committer":{"name":"Kent Safranski","email":"kent@fluidbyte.net","hash":"a1120428141076c608dad49025c7d2ac"},"committed_date":{"$$date":1395792527000},"message":"Fixing avow file"},"_id":"JE1ZS6qAVtW4l52h"}
+{"config":{"tasks":["npminstall","grunt"]},"_id":"JE1ZS6qAVtW4l52h"}

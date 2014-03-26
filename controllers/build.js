@@ -1,11 +1,13 @@
+var runner = require('../lib/modules.js').components.runner;
+
 // Build Controller
 module.exports = {
 
   // Build data
-  data: ['builds'],
+  data: ['builds', 'projects'],
 
   // Build socket namespace
-  sockets: ['build'],
+  sockets: ['builds'],
 
   // Get build by id (GET)
   getBuild: function (req, res) {
@@ -51,7 +53,38 @@ module.exports = {
 
   // Run a build (POST)
   runBuild: function (req, res) {
-
+    var self = this;
+    // Find project
+    self.data.projects.find({ name: req.params[0] }, function (err, projectData) {
+      if (err) {
+        // Data store error
+        self.sendResponse(res, err, projectData);
+      } else if (!projectData.length) {
+        // No project found
+        self.sendResponse(res, 'No project found', null);
+      } else {
+        // Have project, insert new record for build
+        self.data.builds.insert({
+          project_id: projectData[0]._id,
+          start: + new Date()
+        }, function (err, data) {
+          if (err) {
+            // Data store error
+            self.sendResponse(res, err, data);
+          } else {
+            // Start runner with data
+            runner.go({
+              project: projectData[0],
+              build: data,
+              buildDB: self.data.builds,
+              buildSocket: self.sockets.builds
+            });
+            // Send response with the new build data
+            self.sendResponse(res, false, data);
+          }
+        });
+      }
+    });
   }
 
 };

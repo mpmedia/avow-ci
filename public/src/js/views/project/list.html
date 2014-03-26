@@ -5,35 +5,36 @@
         <tr>
             <th class="icon">Status</th>
             <th>Project</th>
-            <th class="icon">Builds</th>
             <th class="icon">Edit</th>
         </tr>
     </thead>
-    <tbody>
-        <!-- ko if: projects().length -->
+    <!-- ko if: projects().length -->
+    <tbody data-bind="foreach: projects">
         <tr>
             <td>
                 <i class="fa fa-dot-circle-o"></i>
             </td>
             <td>
-                <span class="project-list-title">Project-Title</span>
-                <span class="project-list-repo">git@github.com:OWNER/REPO.git</span>
+                <a data-bind="attr: { href: url }">
+                    <span class="project-list-title" data-bind="text: name"></span>
+                    <span class="project-list-repo" data-bind="text: repo"></span>
+                </a>
             </td>
             <td>
-                <a><i class="fa fa-folder"></i></a>
-            </td>
-            <td>
-                <a><i class="fa fa-cog"></i></a>
+                <a data-bind="attr: {href: config }"><i class="fa fa-cog"></i></a>
             </td>
         </tr>
-        <!-- /ko -->
+    </tbody>
+    <!-- /ko -->
 
-        <!-- ko ifnot: projects().length -->
+    <!-- ko ifnot: projects().length -->
+    <tbody>
         <tr>
             <td colspan="4" class="project-list-create">
                 <a href="/#projects/new/config">Create A Project &raquo;</a>
             </td>
         </tr>
-        <!-- /ko -->
+    </tbody>
+    <!-- /ko -->
     </tbody>
 </table>

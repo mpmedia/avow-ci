@@ -1,16 +1,16 @@
 <h2>Project Config</h2>
 
-<form>
+<form data-bind="submit: saveProject">
 
     <label>Name</label>
-    <input data-bind="value: name">
+    <input data-bind="value: name, valueUpdate: 'afterkeydown', event: { blur: testName }">
 
     <label>Repo</label>
-    <input data-bind="value: repo, valueUpdate: 'afterkeydown'">
+    <input data-bind="value: repo, valueUpdate: 'afterkeyup'">
 
     <label>Branch</label>
     <!-- ko if: availableBranches().length -->
-    <select data-bind="options: availableBranches"></select>
+    <select data-bind="options: availableBranches, value: branch, valueAllowUnset: true"></select>
     <!-- /ko -->
 
     <!-- ko ifnot: availableBranches().length -->
@@ -18,6 +18,14 @@
     <!-- /ko -->
 
     <button class="btn-left">Save</button>
-    <button class="btn-right">Delete</button>
+
+    <!-- ko if: newProject -->
+    <button class="btn-right" data-bind="click: cancel">Cancel</button>
+    <!-- /ko -->
+
+    <!-- ko ifnot: newProject -->
+    <button class="btn-right" data-bind="text: deleteText, event: { click: deleteProject }"></button>
+    <!-- /ko -->
+
 
 </form>

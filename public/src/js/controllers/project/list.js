@@ -4,9 +4,7 @@ define([
   'router',
   'request',
   'dom'
-], function (ko, session, Router, request, dom) {
-
-  var router = new Router();
+], function (ko, session, router, request, dom) {
 
   var list = {
 
@@ -25,6 +23,7 @@ define([
     },
 
     load: function () {
+      var self = this;
       // Clear out projects
       this.projects([]);
       // Get list
@@ -32,8 +31,15 @@ define([
         url: '/api/project'
       });
 
-      req.done(function (data) {
-        console.log(data);
+      req.done(function (projects) {
+        for (var project in projects.data) {
+          // Create URL property
+          projects.data[project].url = '#/projects/' + projects.data[project].name;
+          // Create config property
+          projects.data[project].config = projects.data[project].url + '/config';
+          // Push into observableArray
+          self.projects.push(projects.data[project]);
+        }
       });
 
       req.fail(function () {

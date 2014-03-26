@@ -1,6 +1,11 @@
 <div id="notification"></div>
 
-<a class="app-logout" data-bind="visible: loggedIn, click: logoutUser">Logout</a>
+<ul class="app-nav" data-bind="visible: loggedIn">
+    <li><a href="#/projects">Projects</a></li>
+    <li><a href="#/projects/new/config">New Project</a></li>
+    <li><a data-bind="click: logoutUser">Logout</a></li>
+</ul>
+
 
 <h1>AVOW</h1>
 

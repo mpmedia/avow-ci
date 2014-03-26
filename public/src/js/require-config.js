@@ -1,7 +1,7 @@
 requirejs.config({
   paths: {
     'text': 'vendor/requirejs-text/text',
-    'knockout': 'vendor/knockout.js/knockout',
+    'knockout': 'vendor/knockout/index',
     'jquery': 'vendor/jquery/jquery',
     'composer': 'utils/composer',
     'router': 'utils/router',

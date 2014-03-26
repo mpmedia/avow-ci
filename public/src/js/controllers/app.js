@@ -5,9 +5,7 @@ define([
   'dom',
   'router',
   'session'
-], function (compose, ko, request, dom, Router, session) {
-
-  var router = new Router();
+], function (compose, ko, request, dom, router, session) {
 
   var app = {
 
