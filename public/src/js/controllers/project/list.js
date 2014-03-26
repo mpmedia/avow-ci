@@ -54,7 +54,7 @@ define([
             // Setup observables (has status)
             curProject.statusClass = ko.observable(self.setStatusClass(curProject.status));
             curProject.status = ko.observable(projects.data[project].status);
-            curProject.latestBuildURL = ko.observable('#/build/'+curProject.latest_build);
+            curProject.latestBuildURL = ko.observable('#/build/' + curProject.latest_build);
           }
           // Push into observableArray
           self.projects.push(curProject);
@@ -68,22 +68,22 @@ define([
 
     updateBuildStatus: function (data) {
       console.log(data);
-      var project = ko.utils.arrayFirst(this.projects(), function(item) {
-         return item._id === data.project_id;
+      var project = ko.utils.arrayFirst(this.projects(), function (item) {
+        return item._id === data.project_id;
       });
       project.status(data.status);
       project.statusClass(this.setStatusClass(data.status));
-      project.latestBuildURL('#/build/'+data.id);
+      project.latestBuildURL('#/build/' + data.id);
     },
 
     setStatusClass: function (status) {
       switch (status) {
-        case 0:
-          return 'project-status--pass';
-        case 1:
-          return'project-status--fail';
-        case 2:
-          return 'project-status--pending';
+      case 0:
+        return 'project-status--pass';
+      case 1:
+        return 'project-status--fail';
+      case 2:
+        return 'project-status--pending';
       }
     }
 
