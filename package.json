@@ -16,7 +16,8 @@
     "password-hash": "~1.2.1",
     "gift": "~0.3.0",
     "async": "~0.2.10",
-    "fs-extra": "~0.8.1"
+    "fs-extra": "~0.8.1",
+    "mongoskin": "~0.6.1"
   },
   "devDependencies": {
     "grunt": "~0.4.1",

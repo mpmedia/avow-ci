@@ -3,6 +3,9 @@
 public/dist/
 
 public/src/js/vendor/
+temp/
+logs/
+data/
 
 .sass-cache/
 

@@ -36,6 +36,9 @@ var runner = {
           } else {
             // Set temp dir reference
             self.temp = data.dir;
+            // Some cleanup
+            delete data.commits.repo;
+            delete data.commits.author;
             // Update build record with commit data
             self.updateBuildData({ commit: data.commits });
             callback(null);
@@ -50,27 +53,28 @@ var runner = {
             callback(err);
           } else {
             self.updateBuildData({ config: JSON.parse(data) });
-            console.log(data);
             self.config = JSON.parse(data);
+            callback(null);
           }
         });
       }
 
     // Handle errors
     }, function (err) {
+      var end = + new Date();
       if (err) {
         console.log(err);
-        self.updateBuildData({ end: + new Date(), status: 1 });
+        self.updateBuildData({ end: end, status: 1 });
       } else {
         // Log end of build
-        self.updateBuildData({ end: + new Date(), status: 0 });
+        self.updateBuildData({ end: + end, status: 0 });
       }
     });
   },
 
   // Updates build data record
   updateBuildData: function (data) {
-    this.buildData.update({ _id: this.build }, data, function (err, data) {
+    this.buildData.update({ '_id': this.build.toString() }, data, function (err, data) {
       if (err) {
         console.log(err);
       }

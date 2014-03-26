@@ -19,12 +19,14 @@ var config = {
   db: {
 
     // Specify adapter to use
-    adapter: 'nedb',
+    adapter: 'mongo',
 
     // Adapter specific configuration
     config: {
-      // Will store data in /data
-      store: 'data'
+      host: "mongodb://ds031278.mongolab.com:31278/avow",
+      database: "avow",
+      user: "avowjs",
+      pass: "avow1234567!"
     }
 
   },
