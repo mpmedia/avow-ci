@@ -8,6 +8,6 @@ module.exports = {
   status: 'number',
   commit: 'json',
   config: 'json',
-  error: 'string'
+  error: 'json'
 
 };

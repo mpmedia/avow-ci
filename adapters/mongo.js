@@ -15,8 +15,13 @@ var mongo = function (table, config) {
 
 // Correctly formats ID values
 mongo.prototype.formatIds = function (query) {
+  // For IDs
   if (query.hasOwnProperty('_id')) {
     query._id = ObjectID.createFromHexString(query._id);
+  }
+  // For project_id reference
+  if (query.hasOwnProperty('project_id')) {
+    query.project_id = ObjectID.createFromHexString(query.project_id);
   }
   return query;
 };
@@ -39,12 +44,12 @@ mongo.prototype.all = function (cb) {
 };
 
 // Finds specific entry
-mongo.prototype.find = function (query, cb) {
+mongo.prototype.find = function (query, cb, limit, sort) {
   var self = this;
   query = self.formatIds(query);
-  self.store.collection(self.table).find(query).toArray(function (err, data) {
-    cb(err, data);
-  });
+    self.store.collection(self.table).find(query).limit(limit).sort(sort).toArray(function (err, data) {
+      cb(err, data);
+    });
 };
 
 // Inserts new record, generates _id

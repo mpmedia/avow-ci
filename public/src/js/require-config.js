@@ -7,7 +7,8 @@ requirejs.config({
     'router': 'utils/router',
     'dom': 'utils/dom',
     'request': 'utils/request',
-    'session': 'utils/session'
+    'session': 'utils/session',
+    'timestamp': 'utils/timestamp'
   },
   waitSeconds: 0
 });

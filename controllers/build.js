@@ -22,10 +22,10 @@ module.exports = {
   getProjectBuilds: function (req, res) {
     var self = this;
     self.data.builds.find({
-      'project_id': req.params.id
+      'project_id': req.params.id.toString()
     }, function (err, data) {
       self.sendResponse(res, err, data);
-    });
+    }, 20, { $natural: -1 });
   },
 
   // Get build list (GET)
@@ -65,7 +65,7 @@ module.exports = {
       } else {
         // Have project, insert new record for build
         self.data.builds.insert({
-          project_id: projectData[0]._id,
+          project_id: projectData[0]._id.toString(),
           start: + new Date()
         }, function (err, data) {
           if (err) {

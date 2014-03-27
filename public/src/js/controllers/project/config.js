@@ -6,7 +6,7 @@ define([
   'dom'
 ], function (ko, session, router, request, dom) {
 
-  var list = {
+  var config = {
 
     // Create observables
     newProject: ko.observable(true),
@@ -203,6 +203,6 @@ define([
 
   };
 
-  return list;
+  return config;
 
 });

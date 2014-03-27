@@ -38,6 +38,8 @@ define([
       '/projects': 'project/list',
       '/projects/:name': 'project/view',
       '/projects/:name/config': 'project/config',
+      // BUILDS
+      '/build/:id': 'build/view',
       // STATIC
       '/404': '404'
     },

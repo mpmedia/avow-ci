@@ -67,8 +67,7 @@ var runner = {
     }, function (err) {
       var end = + new Date();
       if (err) {
-        console.log(err);
-        self.updateBuildData({ end: end, status: 1 });
+        self.updateBuildData({ end: end, status: 1, error: { output: err } });
         self.updateProjectStatus(1);
       } else {
         // Log end of build

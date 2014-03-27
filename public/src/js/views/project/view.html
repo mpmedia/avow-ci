@@ -3,3 +3,46 @@
 <h2>Project <span data-bind="text: name"></span></h2>
 
 <h4>Repo: <span data-bind="text: repo"></span> (<span data-bind="text: branch"></span>)</h4>
+
+<table class="datatable">
+    <thead>
+        <tr>
+            <th class="icon">
+                Status
+            </th>
+            <th>
+                Started
+            </th>
+            <th>
+                Duration
+            </th>
+            <th class="icon">
+                Logs
+            </th>
+        </tr>
+    </thead>
+    <!-- ko if: builds().length -->
+    <tbody data-bind="foreach: builds">
+        <tr>
+            <td data-bind="attr: { class: statusClass }">
+                <i class="fa fa-circle"></i>
+            </td>
+            <td data-bind="text: start"></td>
+            <td data-bind="text: duration"></td>
+            <td>
+                <a data-bind="attr: { href: url }">
+                    <i class="fa fa-bars"></i>
+                </a>
+            </td>
+        </tr>
+    </tbody>
+    <!-- /ko -->
+
+    <!-- ko ifnot: builds().length -->
+    <tbody>
+        <tr>
+            <td colspan="4">No Builds Have Been Run</td>
+        </tr>
+    </tbody>
+    <!-- /ko -->
+</table>
