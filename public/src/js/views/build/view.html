@@ -1,1 +1,20 @@
-<h2>Build View</h2>
+<h2 data-bind="text: project"></h2>
+<h3>Build ID: <span data-bind="text: _id"></span></h3>
+
+<strong>Start:</strong> <span data-bind="text: start"></span>
+
+<strong>Duration:</strong> <span data-bind="text:duration"></span>
+
+<br>
+
+<h3>Commit:</h3>
+
+<pre class="output" data-bind="text: commit"></pre>
+
+<h3>Config:</h3>
+
+<pre class="output" data-bind="text: config"></pre>
+
+<h3>Log:</h3>
+
+<pre class="output" data-bind="html: log"></pre>

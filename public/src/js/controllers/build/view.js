@@ -13,11 +13,12 @@ define([
     pageTitle: 'Build Profile',
 
     // Create observables
-    id: ko.observable(),
+    _id: ko.observable(),
+    project: ko.observable(),
     commit: ko.observable(),
     config: ko.observable(),
     start: ko.observable(),
-    end: ko.observable(),
+    duration: ko.observable(),
     status: ko.observable(),
     log: ko.observable('Loading...'),
 
@@ -35,7 +36,8 @@ define([
 
     load: function (project, id) {
       var self = this;
-      self.id(id);
+      self._id(id);
+      self.project(project);
 
       // Request build data
       var req = request({
@@ -43,18 +45,17 @@ define([
       });
 
       req.done(function (build) {
-        var startStamp = timestamp.common(build.data.start);
-        var endStamp;
-        if (build.data.hasOwnProperty('end')) {
-          endStamp = timestamp.common(build.data.end);
+        var curBuild = build.data[0];
+        var startStamp = timestamp.common(curBuild.start);
+        if (curBuild.hasOwnProperty('end')) {
+          self.duration(timestamp.difference(curBuild.start, curBuild.end));
         } else {
-          endStamp = "N/A";
+          self.duration('N/A');
         }
-        self.commit(build.data.commit);
-        self.config(JSON.stringify(build.data.config, null, 4));
+        self.commit(JSON.stringify(curBuild.commit, null, 4));
+        self.config(JSON.stringify(curBuild.config, null, 4));
         self.start(startStamp);
-        self.end(endStamp);
-        self.status(self.getStatus(build.data.status));
+        self.status(self.getStatus(curBuild.status));
       });
 
       var reqLog = request({

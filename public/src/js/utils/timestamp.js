@@ -24,9 +24,18 @@ define(function () {
     // Returns difference between two timestamps
     difference: function (start, end) {
       var diff = end - start;
-      return diff;
+      var milliseconds = parseInt((diff%1000)/100);
+      var seconds = parseInt((diff/1000)%60);
+      var minutes = parseInt((diff/(1000*60))%60);
+      var hours = parseInt((diff/(1000*60*60))%24);
+
+      hours = (hours < 10) ? '0' + hours : hours;
+      minutes = (minutes < 10) ? '0' + minutes : minutes;
+      seconds = (seconds < 10) ? '0' + seconds : seconds;
+
+      return minutes + ':' + seconds + '.' + milliseconds;
     },
-    
+
     // Returns common format
     common: function (ts) {
       var obj = this.format(ts);
