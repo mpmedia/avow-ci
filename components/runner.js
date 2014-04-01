@@ -82,7 +82,7 @@ var runner = {
         self.updateProjectStatus(1);
       } else {
         // Log end of build
-        self.updateBuildData({ end: + end, status: 0 });
+        self.updateBuildData({ end: end, status: 0 });
         self.updateProjectStatus(0);
       }
     });
