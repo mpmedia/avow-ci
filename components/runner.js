@@ -1,5 +1,6 @@
 var async = require('async');
 var git = require('../lib/modules.js').components.git;
+var Processor = require('../lib/modules.js').components.processor;
 var fsx = require('fs-extra');
 
 var runner = {
