@@ -15,10 +15,10 @@ define([
     // Create observables
     _id: ko.observable(),
     project: ko.observable(),
-    commit: ko.observable(),
-    config: ko.observable(),
+    commit: ko.observable('No Commit Data'),
+    config: ko.observable('No Config Data'),
     start: ko.observable(),
-    duration: ko.observable(),
+    duration: ko.observable('Pending'),
     status: ko.observable(),
     log: ko.observable('Loading...'),
 
@@ -39,9 +39,14 @@ define([
       self._id(id);
       self.project(project);
 
+      this.getData();
+    },
+
+    getData: function () {
+      var self = this;
       // Request build data
       var req = request({
-        url: '/api/build/'+id
+        url: '/api/build/'+self._id()
       });
 
       req.done(function (build) {
@@ -49,17 +54,19 @@ define([
         var startStamp = timestamp.common(curBuild.start);
         if (curBuild.hasOwnProperty('end')) {
           self.duration(timestamp.difference(curBuild.start, curBuild.end));
-        } else {
-          self.duration('N/A');
         }
-        self.commit(JSON.stringify(curBuild.commit, null, 4));
-        self.config(JSON.stringify(curBuild.config, null, 4));
+        if (curBuild.hasOwnProperty('commit')) {
+          self.commit(JSON.stringify(curBuild.commit, null, 4));
+        }
+        if (curBuild.hasOwnProperty('config')) {
+          self.config(JSON.stringify(curBuild.config, null, 4));
+        }
         self.start(startStamp);
         self.status(self.getStatus(curBuild.status));
       });
 
       var reqLog = request({
-        url: '/api/build/log/'+id
+        url: '/api/build/log/'+self._id()
       });
 
       reqLog.done(function (log) {

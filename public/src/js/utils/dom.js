@@ -17,6 +17,10 @@ define([
       setTimeout(function () {
         $notification.removeClass(type);
       }, 3000);
+    },
+    
+    startBuildSpinner: function (project) {
+      $('.build-spinner[data-project="'+project+'"] i').addClass('fa-spin');
     }
 
   };

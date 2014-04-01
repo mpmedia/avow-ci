@@ -4,6 +4,7 @@
     <thead>
         <tr>
             <th class="icon">Status</th>
+            <th class="icon">Build</th>
             <th>Project</th>
             <th class="icon">Edit</th>
         </tr>
@@ -22,6 +23,11 @@
                 <!-- /ko -->
             </td>
             <td>
+                <a class="build-spinner" data-bind="click: $root.startBuild, attr: { 'data-project': name }">
+                    <i class="fa fa-repeat"></i>
+                </a>
+            </td>
+            <td>
                 <a data-bind="attr: { href: url }">
                     <span class="project-list-title" data-bind="text: name"></span>
                     <span class="project-list-repo" data-bind="text: repo"></span>
@@ -37,7 +43,7 @@
     <!-- ko ifnot: projects().length -->
     <tbody>
         <tr>
-            <td colspan="4" class="project-list-create">
+            <td colspan="5" class="project-list-create">
                 <a href="/#projects/new/config">Create A Project &raquo;</a>
             </td>
         </tr>
