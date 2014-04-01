@@ -38,7 +38,9 @@ app.use(modules.lib.cors);
 // Basic express config
 
 app.enable('strict routing');
-app.use(express.logger(config.get('expressLogging')));
+if (process.env.NODE_ENV !== 'production') {
+  app.use(express.logger(config.get('expressLogging')));
+}
 app.use(express.cookieParser());
 app.use(express.cookieSession({
   secret: config.get('secret'),
@@ -111,6 +113,7 @@ server.listen(config.get('env.port'));
 modules.lib.stdout('title', 'SERVER RUNNING');
 modules.lib.stdout('output', 'PORT: ' + config.get('env.port'));
 
-// Start a new console section for log output
-
-modules.lib.stdout('title', 'LOGGING OUTPUT');
+// If not prod, start a new console section for log output
+if (process.env.NODE_ENV !== 'production') {
+  modules.lib.stdout('title', 'LOGGING OUTPUT');
+}

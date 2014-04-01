@@ -17,8 +17,8 @@
     "gift": "~0.3.0",
     "async": "~0.2.10",
     "fs-extra": "~0.8.1",
-    "mongoskin": "~0.6.1",
-    "readline": "0.0.3"
+    "ansi_up": "~1.0.0",
+    "mongoskin": "~0.6.1"
   },
   "devDependencies": {
     "grunt": "~0.4.1",
