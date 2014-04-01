@@ -36,36 +36,35 @@ define([
     load: function (project, id) {
       var self = this;
       self.id(id);
-      
+
       // Request build data
       var req = request({
         url: '/api/build/'+id
       });
 
       req.done(function (build) {
-        var startObj = timestamp.format(build.data.start);
-        var endFormat;
+        var startStamp = timestamp.common(build.data.start);
+        var endStamp;
         if (build.data.hasOwnProperty('end')) {
-          var endObj = timestamp.format(build.data.end);
-          endFormat = endObj.month + ' ' + endObj.date + ' at ' + endObj.hour + ':' + endObj.min + ':' + endObj.sec + endObj.ampm;
+          endStamp = timestamp.common(build.data.end);
         } else {
-          endFormat = "N/A";
+          endStamp = "N/A";
         }
         self.commit(build.data.commit);
         self.config(JSON.stringify(build.data.config, null, 4));
-        self.start(startObj.month + ' ' + startObj.date + ' at ' + startObj.hour + ':' + startObj.min + ':' + startObj.sec + startObj.ampm);
-        self.end(endFormat);
+        self.start(startStamp);
+        self.end(endStamp);
         self.status(self.getStatus(build.data.status));
       });
-      
+
       var reqLog = request({
         url: '/api/build/log/'+id
       });
-      
+
       reqLog.done(function (log) {
         self.log(log.data);
       });
-      
+
       reqLog.fail(function () {
         self.log('ERROR');
       });

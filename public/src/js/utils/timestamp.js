@@ -25,6 +25,12 @@ define(function () {
     difference: function (start, end) {
       var diff = end - start;
       return diff;
+    },
+    
+    // Returns common format
+    common: function (ts) {
+      var obj = this.format(ts);
+      return obj.month + ' ' + obj.date + ' at ' + obj.hour + ':' + obj.min + ':' + obj.sec + obj.ampm;
     }
 
   };

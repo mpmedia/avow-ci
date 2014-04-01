@@ -67,14 +67,13 @@ define([
       reqBuilds.done(function (builds) {
         for (var build in builds.data) {
           var curBuild = builds.data[build];
-          var start = timestamp.format(curBuild.start);
           curBuild.url = '#/projects/' + self.name() + '/build/' + curBuild._id;
           if (curBuild.hasOwnProperty('end')) {
             curBuild.duration = timestamp.difference(curBuild.start, curBuild.end);
           } else {
             curBuild.duration = 'N/A';
           }
-          curBuild.start = start.month + ' ' + start.date + ' at ' + start.hour + ':' + start.min + ':' + start.sec + start.ampm;
+          curBuild.start = timestamp.common(curBuild.start);
           curBuild.statusClass = self.setStatusClass(curBuild.status);
           self.builds.push(curBuild);
         }
