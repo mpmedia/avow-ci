@@ -95,7 +95,7 @@ app.all('/api/:endpoint/*', multiparty, modules.lib.api.process);
 // Simply starts Socket.io over the server
 
 modules.lib.stdout('title', 'STARTING SOCKETS');
-sockets = io.listen(server);
+sockets = io.listen(server, { log: false });
 modules.lib.socketio.setIO(sockets);
 
 // Initialize controllers
