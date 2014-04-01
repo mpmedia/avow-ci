@@ -7,7 +7,7 @@ var fs = require('fs');
 // Spawns and runs processes and logs output
 var processor = function (task, id, callback) {
   // Get arguments, split command, setup vars
-  var args = task.split(" ");
+  var args = task.split(' ');
   var command = args[0];
   var cwd = __dirname + '/../temp/'+id;
   var stdout;
@@ -16,7 +16,7 @@ var processor = function (task, id, callback) {
 
   // Pushes output to log
   var trace = function (id, data) {
-    fs.appendFileSync(__dirname + '/../logs/'+id+'.log', data + "\n");
+    fs.appendFileSync(__dirname + '/../logs/'+id+'.log', data + '\n');
   };
 
   // Create log
@@ -27,14 +27,14 @@ var processor = function (task, id, callback) {
 
   // Check command to apply appropriate color flags
   switch (command) {
-  case "npm":
-    proc = spawn(command, [args, "--color", "always"], { cwd: cwd });
+  case 'npm':
+    proc = spawn(command, [args, '--color', 'always'], { cwd: cwd });
     break;
-  case "grunt":
+  case 'grunt':
     if (args.length) {
-      proc = spawn(command, [args, "--color"], { cwd: cwd });
+      proc = spawn(command, [args, '--color'], { cwd: cwd });
     } else {
-      proc = spawn(command, ["--color"], { cwd: cwd });
+      proc = spawn(command, ['--color'], { cwd: cwd });
     }
     break;
   default:
@@ -56,23 +56,23 @@ var processor = function (task, id, callback) {
   });
 
   // Listen for stdout
-  stdout.on("line", function (line) {
+  stdout.on('line', function (line) {
     trace(id, ansi_up.ansi_to_html(line));
   });
 
   // Listen for stderr
-  stderr.on("line", function (line) {
+  stderr.on('line', function (line) {
     trace(id, ansi_up.ansi_to_html(line));
   });
 
   // Check status on close
-  proc.on("close", function (code) {
+  proc.on('close', function (code) {
     if (code === 0) {
       // Success
       callback(null);
     } else {
       // Failure
-      callback("Process failed with code [" + code + "]");
+      callback('Process failed with code [' + code + ']');
     }
   });
 };
