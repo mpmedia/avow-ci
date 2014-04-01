@@ -22,9 +22,10 @@ define([
     startBuildSpinner: function (project) {
       $('.build-spinner[data-project="'+project+'"] i').addClass('fa-spin');
     },
-    
+
     appendBuildLog: function (data) {
       $('.build-log').append(data);
+      console.log('APPEND', data);
     }
 
   };

@@ -54,6 +54,7 @@ define([
 
       // Watch log socket
       io.connect('/api/builds/').on('log', function (data) {
+        console.log(data);
         // If build log socket is for current build
         if (data.id === id) {
           dom.appendBuildLog(data.data);
@@ -90,6 +91,7 @@ define([
 
       reqLog.done(function (log) {
         self.log(log.data);
+        dom.appendBuildLog(self.log());
       });
 
       reqLog.fail(function () {
