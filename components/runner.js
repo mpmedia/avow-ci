@@ -68,7 +68,7 @@ var runner = {
       // Run processes/tasks
       tasks: function (callback) {
         async.eachSeries(self.config.tasks, function (i, callback) {
-          processor(i, self.build, callback);
+          processor(i, self.build, self.buildSocket, callback);
         }, function (err) {
           callback(err);
         });

@@ -5,7 +5,7 @@ var fsx = require('fs-extra');
 var fs = require('fs');
 
 // Spawns and runs processes and logs output
-var processor = function (task, id, callback) {
+var processor = function (task, id, socket, callback) {
   // Get arguments, split command, setup vars
   var args = task.split(' ');
   var command = args[0];
@@ -16,6 +16,7 @@ var processor = function (task, id, callback) {
 
   // Pushes output to log
   var trace = function (id, data) {
+    socket.emit('log', { id: id, data: data });
     fs.appendFileSync(__dirname + '/../logs/'+id+'.log', data + '\n');
   };
 
