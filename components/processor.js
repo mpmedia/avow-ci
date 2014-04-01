@@ -1,15 +1,22 @@
 var readline = require('readline');
 var spawn = require('child_process').spawn;
 var ansi_up = require('ansi_up');
+var fs = require('fs');
 
 // Spawns and runs processes and logs output
-var Processor = function (process, cwd, callback) {
+var processor = function (task, id, callback) {
   // Get arguments, split command, setup vars
-  var args = process.split(" "),
-    command = args[0],
-    stdout,
-    stderr,
-    proc;
+  var args = task.split(" ");
+  var command = args[0];
+  var cwd = __dirname + '../../temp/'+id;
+  var stdout;
+  var stderr;
+  var proc;
+
+  // Pushes output to log
+  var trace = function (id, data) {
+    fs.appendFileSync(__dirname + '../../logs/'+id+'.log', data + "\n");
+  };
 
   // Set arguments by shifting array
   args.shift();
@@ -46,12 +53,12 @@ var Processor = function (process, cwd, callback) {
 
   // Listen for stdout
   stdout.on("line", function (line) {
-    trace(build, ansi_up.ansi_to_html(line));
+    trace(id, ansi_up.ansi_to_html(line));
   });
 
   // Listen for stderr
   stderr.on("line", function (line) {
-    trace(build, ansi_up.ansi_to_html(line));
+    trace(id, ansi_up.ansi_to_html(line));
   });
 
   // Check status on close
@@ -66,4 +73,4 @@ var Processor = function (process, cwd, callback) {
   });
 };
 
-return Processor;
+return processor;

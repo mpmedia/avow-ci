@@ -1,6 +1,6 @@
 var async = require('async');
 var git = require('../lib/modules.js').components.git;
-var Processor = require('../lib/modules.js').components.processor;
+var processor = require('../lib/modules.js').components.processor;
 var fsx = require('fs-extra');
 
 var runner = {
@@ -62,6 +62,15 @@ var runner = {
             self.config = JSON.parse(data);
             callback(null);
           }
+        });
+      },
+
+      // Run processes/tasks
+      tasks: function (callback) {
+        async.eachSeries(self.config.tasks, function (i, callback) {
+          processor(i, self.build, callback);
+        }, function (err) {
+          callback(err);
         });
       }
 
