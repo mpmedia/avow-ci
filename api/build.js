@@ -14,6 +14,10 @@ module.exports = {
     path: 'project/:id',
     controller: 'build',
     fn: 'getProjectBuilds'
+  }, {
+    path: 'log/:id',
+    controller: 'build',
+    fn: 'getLogData'
   }],
 
   // Triggers a build process

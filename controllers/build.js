@@ -1,4 +1,5 @@
 var runner = require('../lib/modules.js').components.runner;
+var fs = require('fs');
 
 // Build Controller
 module.exports = {
@@ -34,6 +35,18 @@ module.exports = {
     // Get list
     self.data.builds.all(function (err, data) {
       self.sendResponse(res, err, data);
+    });
+  },
+
+  // Get build log data
+  getLogData: function (req, res) {
+    var self = this;
+    fs.readFile(__dirname+'/../logs/'+req.params.id+'.log', 'utf-8', function (err, data) {
+      if (err) {
+        self.sendResponse(res, 'NO DATA');
+      } else {
+        self.sendResponse(res, false, data);
+      }
     });
   },
 
