@@ -99,6 +99,7 @@ app.all('/api/:endpoint/*', multiparty, modules.lib.api.process);
 modules.lib.stdout('title', 'STARTING SOCKETS');
 sockets = io.listen(server, { log: false });
 modules.lib.socketio.setIO(sockets);
+modules.lib.stdout('output', 'Sockets Running');
 
 // Initialize controllers
 // Loads up each of the controllers, binds them to their specified data sources

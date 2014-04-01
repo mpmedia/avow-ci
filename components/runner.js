@@ -36,7 +36,7 @@ var runner = {
 
       // Clone into temporary
       clone: function (callback) {
-        git.clone(self.repo, self.branch, function (err, data) {
+        git.clone(self.repo, self.build, self.branch, function (err, data) {
           if (err) {
             callback(err);
           } else {

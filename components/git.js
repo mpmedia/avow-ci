@@ -5,7 +5,7 @@ var gitRunner = {
 
   // Fetches branches for repo
   branches: function (repo, cb) {
-    var temp = __dirname + '../../temp/'+(+new Date());
+    var temp = __dirname + '/../temp/'+(+new Date());
     git.clone(repo, temp, function (err, repo) {
       if (err) {
         cb(err);
@@ -24,9 +24,11 @@ var gitRunner = {
   },
 
   // Clone a repo
-  clone: function (repo, branch, cb) {
+  clone: function (repo, id, branch, cb) {
 
-    var temp = __dirname + '../../temp/'+(+new Date());
+    id = id || +new Date();
+
+    var temp = __dirname + '/../temp/'+id;
     var output = {};
     var commit;
     var checkout;

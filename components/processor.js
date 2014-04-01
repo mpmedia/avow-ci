@@ -1,6 +1,7 @@
 var readline = require('readline');
 var spawn = require('child_process').spawn;
 var ansi_up = require('ansi_up');
+var fsx = require('fs-extra');
 var fs = require('fs');
 
 // Spawns and runs processes and logs output
@@ -8,15 +9,18 @@ var processor = function (task, id, callback) {
   // Get arguments, split command, setup vars
   var args = task.split(" ");
   var command = args[0];
-  var cwd = __dirname + '../../temp/'+id;
+  var cwd = __dirname + '/../temp/'+id;
   var stdout;
   var stderr;
   var proc;
 
   // Pushes output to log
   var trace = function (id, data) {
-    fs.appendFileSync(__dirname + '../../logs/'+id+'.log', data + "\n");
+    fs.appendFileSync(__dirname + '/../logs/'+id+'.log', data + "\n");
   };
+
+  // Create log
+  fsx.createFileSync(__dirname + '/../logs/'+id+'.log');
 
   // Set arguments by shifting array
   args.shift();
@@ -73,4 +77,4 @@ var processor = function (task, id, callback) {
   });
 };
 
-return processor;
+module.exports = processor;
