@@ -7,6 +7,7 @@ var runner = {
   // Kicks off build runner
   go: function (data) {
     // Get project data
+    this.project_name = data.project.name;
     this.repo = data.project.repo;
     this.branch = data.project.branch;
     this.project_id = data.project._id;
@@ -103,6 +104,7 @@ var runner = {
   emitUpdate: function (status) {
     this.buildSocket.emit('update', {
       id: this.build.toString(),
+      project_name: this.project_name,
       project_id: this.project_id.toString(),
       status: status
     });

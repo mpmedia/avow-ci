@@ -68,7 +68,7 @@ define([
         for (var build in builds.data) {
           var curBuild = builds.data[build];
           var start = timestamp.format(curBuild.start);
-          curBuild.url = '#/build/' + curBuild._id;
+          curBuild.url = '#/projects/' + self.name() + '/build/' + curBuild._id;
           if (curBuild.hasOwnProperty('end')) {
             curBuild.duration = timestamp.difference(curBuild.start, curBuild.end);
           } else {

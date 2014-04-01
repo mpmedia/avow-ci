@@ -57,7 +57,7 @@ define([
             // Setup observables (has status)
             curProject.statusClass = ko.observable(self.setStatusClass(curProject.status));
             curProject.status = ko.observable(projects.data[project].status);
-            curProject.latestBuildURL = ko.observable('#/build/' + curProject.latest_build);
+            curProject.latestBuildURL = ko.observable('#/projects/' + curProject.name + '/build/' + curProject.latest_build);
           }
           // Push into observableArray
           self.projects.push(curProject);
@@ -76,7 +76,7 @@ define([
       });
       project.status(data.status);
       project.statusClass(this.setStatusClass(data.status));
-      project.latestBuildURL('#/build/' + data.id);
+      project.latestBuildURL('#/projects/' + data.project_name + '/build/' + data.id);
     },
 
     setStatusClass: function (status) {

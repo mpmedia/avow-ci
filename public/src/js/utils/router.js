@@ -50,7 +50,7 @@ define([], function () {
     }
 
     // Check and run 'before'
-    if (routeObj.hasOwnProperty('before') && typeof routeObj.before === 'function') {
+    if (routeObj && routeObj.hasOwnProperty('before') && typeof routeObj.before === 'function') {
       // Should fire callback with arg 'res' = true/false
       routeObj.before(function (res) {
         if (res && routeObj.load) {
