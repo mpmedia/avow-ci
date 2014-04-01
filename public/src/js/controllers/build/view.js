@@ -19,6 +19,7 @@ define([
     start: ko.observable(),
     end: ko.observable(),
     status: ko.observable(),
+    log: ko.observable('Loading...'),
 
     // Check if session exists
     before: function (fn) {
@@ -35,10 +36,12 @@ define([
     load: function (project, id) {
       var self = this;
       self.id(id);
+      
+      // Request build data
       var req = request({
         url: '/api/build/'+id
       });
-      
+
       req.done(function (build) {
         var startObj = timestamp.format(build.data.start);
         var endFormat;
@@ -54,8 +57,20 @@ define([
         self.end(endFormat);
         self.status(self.getStatus(build.data.status));
       });
+      
+      var reqLog = request({
+        url: '/api/build/log/'+id
+      });
+      
+      reqLog.done(function (log) {
+        self.log(log.data);
+      });
+      
+      reqLog.fail(function () {
+        self.log('ERROR');
+      });
     },
-    
+
     getStatus: function (status) {
       var obj = { 0: 'Pass', 1: 'Fail', 2: 'Pending' };
       return obj[status];
