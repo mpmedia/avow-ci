@@ -1,9 +1,9 @@
-var readline = require("readline");
-var spawn = require("child_process").spawn;
-var ansi_up = require("ansi_up");
+var readline = require('readline');
+var spawn = require('child_process').spawn;
+var ansi_up = require('ansi_up');
 
 // Spawns and runs processes and logs output
-var Processor = function (process) {
+var Processor = function (process, cwd, callback) {
   // Get arguments, split command, setup vars
   var args = process.split(" "),
     command = args[0],
@@ -17,30 +17,20 @@ var Processor = function (process) {
   // Check command to apply appropriate color flags
   switch (command) {
   case "npm":
-    proc = spawn(command, [args, "--color", "always"], {
-      cwd: config.app.temp + build.state.cwd
-    });
+    proc = spawn(command, [args, "--color", "always"], { cwd: cwd });
     break;
   case "grunt":
     if (args.length) {
-      proc = spawn(command, [args, "--color"], {
-        cwd: config.app.temp + build.state.cwd
-      });
+      proc = spawn(command, [args, "--color"], { cwd: cwd });
     } else {
-      proc = spawn(command, ["--color"], {
-        cwd: config.app.temp + build.state.cwd
-      });
+      proc = spawn(command, ["--color"], { cwd: cwd });
     }
     break;
   default:
     if (args.length) {
-      proc = spawn(command, [args], {
-        cwd: config.app.temp + build.state.cwd
-      });
+      proc = spawn(command, [args], { cwd: cwd });
     } else {
-      proc = spawn(command, [], {
-        cwd: config.app.temp + build.state.cwd
-      });
+      proc = spawn(command, [], { cwd: cwd });
     }
   }
 
