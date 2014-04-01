@@ -9,6 +9,9 @@ define([
 
   var view = {
 
+    // Set page title
+    pageTitle: 'Project Details',
+
     _id: ko.observable(),
     name: ko.observable(),
     repo: ko.observable(),
@@ -58,18 +61,18 @@ define([
 
       // Get builds
       var reqBuilds = request({
-        url: '/api/build/project/'+this._id()
+        url: '/api/build/project/' + this._id()
       });
 
       reqBuilds.done(function (builds) {
         for (var build in builds.data) {
           var curBuild = builds.data[build];
           var start = timestamp.format(curBuild.start);
-          curBuild.url = '#/build/'+curBuild._id;
+          curBuild.url = '#/build/' + curBuild._id;
           if (curBuild.hasOwnProperty('end')) {
             curBuild.duration = timestamp.difference(curBuild.start, curBuild.end);
           } else {
-            curBuild.duration = "N/A";
+            curBuild.duration = 'N/A';
           }
           curBuild.start = start.month + ' ' + start.date + ' at ' + start.hour + ':' + start.min + ':' + start.sec + start.ampm;
           curBuild.statusClass = self.setStatusClass(curBuild.status);

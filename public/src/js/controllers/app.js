@@ -9,6 +9,8 @@ define([
 
   var app = {
 
+    appTitle: 'Avow',
+
     loggedIn: ko.observable(false),
 
     logoutUser: function () {
@@ -26,10 +28,12 @@ define([
       });
     },
 
-    // Initializes the application by establishing routes
+    // Initializes the application
     init: function () {
-      compose(this.routes);
+      compose(this);
     },
+
+    transition: 50,
 
     routes: {
       // USER
@@ -39,7 +43,7 @@ define([
       '/projects/:name': 'project/view',
       '/projects/:name/config': 'project/config',
       // BUILDS
-      '/build/:id': 'build/view',
+      '/projects/:name/build/:id': 'build/view',
       // STATIC
       '/404': '404'
     },

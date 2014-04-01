@@ -8,6 +8,9 @@ define([
 
   var login = {
 
+    // Set page title
+    pageTitle: 'Login',
+
     email: ko.observable(),
     password: ko.observable(),
 

@@ -8,6 +8,9 @@ define([
 
   var view = {
 
+    // Set page title
+    pageTitle: 'Build Profile',
+
     // Create observables
     id: ko.observable(),
 
@@ -22,9 +25,10 @@ define([
         }
       });
     },
-    
-    load: function (id) {
+
+    load: function (project, id) {
       this.id(id);
+      console.log(project);
       console.log(id);
     }
   };

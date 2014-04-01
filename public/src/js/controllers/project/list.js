@@ -9,6 +9,9 @@ define([
 
   var list = {
 
+    // Set page title
+    pageTitle: 'Projects',
+
     projects: ko.observableArray(),
 
     // Check if session exists

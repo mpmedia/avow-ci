@@ -8,6 +8,9 @@ define([
 
   var config = {
 
+    // Set page title
+    pageTitle: 'Project Configuration',
+
     // Create observables
     newProject: ko.observable(true),
     _id: ko.observable(),
