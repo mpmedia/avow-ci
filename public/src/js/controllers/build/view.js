@@ -1,3 +1,4 @@
+/* global io */
 define([
   'knockout',
   'session',
@@ -38,8 +39,26 @@ define([
       var self = this;
       self._id(id);
       self.project(project);
+      self.duration('Pending');
 
       this.getData();
+
+      // Watch update socket
+      io.connect('/api/builds/').on('update', function (data) {
+        // If socket matches build ID and the status is not pending...
+        if (data.id === id && data.status === 0 || data.status === 1) {
+          // Update the data...
+          self.getData();
+        }
+      });
+
+      // Watch log socket
+      io.connect('/api/builds/').on('log', function (data) {
+        // If build log socket is for current build
+        if (data.id === id) {
+          dom.appendBuildLog(data.data);
+        }
+      });
     },
 
     getData: function () {

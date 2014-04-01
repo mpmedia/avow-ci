@@ -69,7 +69,6 @@ define([
     },
 
     updateBuildStatus: function (data) {
-      console.log(data);
       var project = ko.utils.arrayFirst(this.projects(), function (item) {
         return item._id === data.project_id;
       });
