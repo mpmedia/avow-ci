@@ -24,8 +24,10 @@ define([
     },
 
     appendBuildLog: function (data) {
-      $('.build-log').append(data);
-      console.log('APPEND', data);
+      var log = $('.build-log');
+      log
+        .append(data+'\n')
+        .scrollTop(log.prop("scrollHeight"));
     }
 
   };

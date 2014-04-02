@@ -46,7 +46,7 @@ define([
       // Watch update socket
       io.connect('/api/builds/').on('update', function (data) {
         // If socket matches build ID and the status is not pending...
-        if (data.id === id && data.status === 0 || data.status === 1) {
+        if (data.id === id) {
           // Update the data...
           self.getData();
         }
@@ -54,7 +54,6 @@ define([
 
       // Watch log socket
       io.connect('/api/builds/').on('log', function (data) {
-        console.log(data);
         // If build log socket is for current build
         if (data.id === id) {
           dom.appendBuildLog(data.data);
@@ -91,7 +90,6 @@ define([
 
       reqLog.done(function (log) {
         self.log(log.data);
-        dom.appendBuildLog(self.log());
       });
 
       reqLog.fail(function () {

@@ -357,4 +357,5 @@
         background: #1a1a1a;
         text-shadow: none;
         color: #fff;
+        max-height: 600px;
     }
