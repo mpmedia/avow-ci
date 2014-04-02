@@ -78,10 +78,20 @@ Runner.prototype.run = function () {
     if (err) {
       self.updateBuildData({ end: end, status: 1, error: { output: err } });
       self.updateProjectStatus(1);
+      // Cleanup
+      fsx.remove(self.temp);
     } else {
       // Log end of build
       self.updateBuildData({ end: end, status: 0 });
       self.updateProjectStatus(0);
+      // Copy to build folder
+      fsx.copy(self.temp, __dirname+'/../builds/'+self.project_name, function (err) {
+        if (err) {
+          console.log('Error moving completed build of '+self.project_name);
+        }
+        // Cleanup
+        fsx.remove(self.temp);
+      });
     }
   });
 };

@@ -5,6 +5,7 @@ public/dist/
 public/src/js/vendor/
 temp/
 logs/
+builds/
 data/
 
 .sass-cache/
