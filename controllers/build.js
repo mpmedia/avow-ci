@@ -1,4 +1,4 @@
-var runner = require('../lib/modules.js').components.runner;
+var Runner = require('../lib/modules.js').components.runner;
 var fs = require('fs');
 
 // Build Controller
@@ -86,7 +86,7 @@ module.exports = {
             self.sendResponse(res, err, data);
           } else {
             // Start runner with data
-            runner.go({
+            var build = new Runner({
               project: projectData[0],
               projectDB: self.data.projects,
               build: data[0],

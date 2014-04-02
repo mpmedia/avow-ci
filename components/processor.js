@@ -5,7 +5,7 @@ var fsx = require('fs-extra');
 var fs = require('fs');
 
 // Spawns and runs processes and logs output
-var processor = function (task, id, socket, callback) {
+var Processor = function (task, id, socket, callback) {
   // Get arguments, split command, setup vars
   var args = task.split(' ');
   var command = args[0];
@@ -78,4 +78,4 @@ var processor = function (task, id, socket, callback) {
   });
 };
 
-module.exports = processor;
+module.exports = Processor;
