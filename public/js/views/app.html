@@ -1,13 +1,17 @@
 <div id="notification"></div>
 
-<ul class="app-nav" data-bind="visible: loggedIn">
-    <li><a href="#/projects">Projects</a></li>
-    <li><a href="#/projects/new/config">New Project</a></li>
-    <li><a data-bind="click: logoutUser">Logout</a></li>
-</ul>
+<header>
+
+    <ul class="app-nav" data-bind="visible: loggedIn">
+        <li><a href="#/projects">Projects</a></li>
+        <li><a href="#/projects/new/config">New Project</a></li>
+        <li><a data-bind="click: logoutUser">Logout</a></li>
+    </ul>
 
 
-<h1>AVOW</h1>
+    <img id="logo" title="Avow CI" src="assets/images/avow-logo.gif">
+
+</header>
 
 <div id="viewContainer">
     <!-- Where routes are loaded... -->

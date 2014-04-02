@@ -55,8 +55,10 @@ define([
         if (!res) {
           // No session
           self.loggedIn(false);
+          dom.setSessionClass(0);
         } else {
           self.loggedIn(true);
+          dom.setSessionClass(1);
         }
       });
     }

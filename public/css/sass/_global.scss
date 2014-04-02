@@ -2,10 +2,32 @@
     @include box-sizing(border-box);
 }
 
+@font-face {
+    font-family: 'open-sans-light';
+    src: url('../assets/fonts/opensans-light-webfont.eot');
+    src: url('../assets/fonts/opensans-light-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../assets/fonts/opensans-light-webfont.woff') format('woff'),
+         url('../assets/fonts/opensans-light-webfont.ttf') format('truetype'),
+         url('../assets/fonts/opensans-light-webfont.svg#open_sanslight') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Ubuntu-Mono';
+    src: url('../assets/fonts/ubuntumono-regular-webfont.eot');
+    src: url('../assets/fonts/ubuntumono-regular-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../assets/fonts/ubuntumono-regular-webfont.woff') format('woff'),
+         url('../assets/fonts/ubuntumono-regular-webfont.ttf') format('truetype'),
+         url('../assets/fonts/ubuntumono-regular-webfont.svg#ubuntu_monoregular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
 html {
     width: 100%;
     height: 100%;
-    font: normal 1em 'Roboto', 'Helvetica Neue', Helvetica, Arial, serif;
+    font: normal 1em 'open-sans-light', 'Helvetica Neue', Helvetica, Arial, serif;
     color: #6d6d6d;
 }
 
@@ -20,24 +42,51 @@ body {
     background: #f2f2f2;
 }
 
+h2 {
+    font-size: 2em;
+    margin-bottom: 30px;
+}
+
+h3 {
+    font-size: 1.6em;
+    margin: 15px 0 25px 0;
+}
+
+/* MAIN CONTAINER */
+
+#viewContainer {
+    padding: 20px;
+    margin: 20px;
+    background: #fff;
+    border-radius: 3px;
+    border: 1px solid #ccc;
+}
+
+body.login {
+    #viewContainer {
+        background: none;
+        border: none;
+    }
+}
+
 /* TABLES */
 
 .datatable {
-    border-collapse: separate;
+    border-collapse: collapse;
     width: 100%;
     margin: 15px 0;
     border-spacing: 0;
-    box-shadow: 0 5px 8px 0 rgba(0, 0, 0, .1);
 
     th, td {
-       padding: 8px 10px 6px 10px;
+       padding: 10px 15px;
        border: 1px solid #ccc;
-       background: #fafafa;
+       background: #fff;
     }
 
     th {
        text-align: left;
-       font-weight: bold;
+       background-color: #9c0200;
+       color: #fff;
     }
 
     th.icon {
@@ -57,4 +106,16 @@ body {
         text-align: center;
     }
 
+}
+
+/* LOADING */
+
+.loading {
+    display: block;
+    position: fixed;
+    width: 100%;
+    left: 0;
+    top: 45%;
+    text-align: center;
+    font-weight: bold;
 }

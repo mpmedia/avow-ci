@@ -28,6 +28,16 @@ define([
       log
         .append(data + '\n')
         .scrollTop(log.prop('scrollHeight'));
+    },
+
+    setSessionClass: function (status) {
+      if (status===0) {
+        $('header').removeClass('active-session');
+        $('body').addClass('login');
+      } else {
+        $('header').addClass('active-session');
+        $('body').removeClass('login');
+      }
     }
 
   };

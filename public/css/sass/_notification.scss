@@ -1,0 +1,27 @@
+#notification {
+    position: fixed;
+    z-index: 999;
+    top: -100px;
+    left: 0;
+    width: 100%;
+    background: #1a1a1a;
+    color: #fff;
+    padding: 15px;
+    text-align: center;
+    text-shadow: none;
+    opacity: 0;
+    transition: .3s ease top, .3s ease opacity;
+
+    &.error, &.success {
+        top: 0;
+        opacity: 1;
+    }
+
+    &.error {
+        border-bottom: 3px solid #ff0000;
+    }
+
+    &.success {
+        border-bottom: 3px solid #00ff00;
+    }
+}

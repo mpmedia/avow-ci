@@ -1,0 +1,71 @@
+/* PROJECT LIST */
+
+.project-list-title {
+    display: block;
+    font-size: 1.5em;
+    font-weight: bold;
+}
+
+.project-list-repo, .project-list-branch {
+    display: inline-block;
+    font-size: 1em;
+    color: #666;
+    font-style: italic;
+}
+
+.project-list-create a {
+    display: block;
+    padding: 15px;
+    text-align: center;
+}
+
+.project-status--none {
+    a>i {
+        color: #666;
+        transition: .3s ease text-shadow;
+    }
+
+    a:hover>i {
+        text-shadow: 0 0 3px #C4C4C4;
+    }
+}
+
+.project-status--pass {
+    a>i {
+        color: #0fad4b;
+        transition: .3s ease text-shadow;
+    }
+
+    a:hover>i {
+        text-shadow: 0 0 3px #C4C4C4;
+    }
+}
+
+.project-status--fail {
+    a>i {
+        color: #e31818;
+        transition: .3s ease text-shadow;
+    }
+
+    a:hover>i {
+        text-shadow: 0 0 3px #C4C4C4;
+    }
+}
+
+.project-status--pending {
+    a>i {
+        color: #ffb400;
+        transition: .3s ease text-shadow;
+    }
+
+    a:hover>i {
+        text-shadow: 0 0 3px #C4C4C4;
+    }
+}
+
+/* PROJECT VIEW */
+
+.project-view-config {
+    float: right;
+    margin-right: 0;
+}
