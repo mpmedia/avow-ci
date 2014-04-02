@@ -67,7 +67,7 @@ define([
 
     getBuilds: function () {
       var self = this;
-      
+
       // Get builds
       var reqBuilds = request({
         url: '/api/build/project/' + this._id()

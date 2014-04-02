@@ -20,14 +20,14 @@ define([
     },
 
     startBuildSpinner: function (project) {
-      $('.build-spinner[data-project="'+project+'"] i').addClass('fa-spin');
+      $('.build-spinner[data-project="' + project + '"] i').addClass('fa-spin');
     },
 
     appendBuildLog: function (data) {
       var log = $('.build-log');
       log
-        .append(data+'\n')
-        .scrollTop(log.prop("scrollHeight"));
+        .append(data + '\n')
+        .scrollTop(log.prop('scrollHeight'));
     }
 
   };

@@ -90,7 +90,7 @@ define([
 
     startBuild: function (project) {
       var req = request({
-        url: '/api/build/'+project.name,
+        url: '/api/build/' + project.name,
         type: 'POST'
       });
 
@@ -98,12 +98,12 @@ define([
         dom.startBuildSpinner(project.name);
         dom.notification('success', 'Building ' + project.name + ' (' + build.data[0]._id + ')');
         setTimeout(function () {
-          router.go('/projects/'+project.name+'/build/'+build.data[0]._id);
+          router.go('/projects/' + project.name + '/build/' + build.data[0]._id);
         }, 2000);
       });
 
       req.fail(function () {
-        dom.showNotification('error', 'Could not start build');
+        dom.notification('error', 'Could not start build');
       });
     }
 

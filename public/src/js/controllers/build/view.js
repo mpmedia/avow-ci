@@ -59,7 +59,7 @@ define([
       var self = this;
       // Request build data
       var req = request({
-        url: '/api/build/'+self._id()
+        url: '/api/build/' + self._id()
       });
 
       req.done(function (build) {
@@ -79,7 +79,7 @@ define([
       });
 
       var reqLog = request({
-        url: '/api/build/log/'+self._id()
+        url: '/api/build/log/' + self._id()
       });
 
       reqLog.done(function (log) {
@@ -99,7 +99,11 @@ define([
     },
 
     getStatus: function (status) {
-      var obj = { 0: 'Pass', 1: 'Fail', 2: 'Pending' };
+      var obj = {
+        0: 'Pass',
+        1: 'Fail',
+        2: 'Pending'
+      };
       return obj[status];
     }
   };
