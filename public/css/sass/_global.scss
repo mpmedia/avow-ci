@@ -1,0 +1,21 @@
+* {
+    @include box-sizing(border-box);
+}
+
+html {
+    width: 100%;
+    height: 100%;
+    font: normal 1em 'Roboto', 'Helvetica Neue', Helvetica, Arial, serif;
+    color: #6d6d6d;
+}
+
+body {
+    position: absolute;
+    max-width: 100%;
+    height: 100%;
+    margin: 0 auto;
+    right: 0;
+    left: 0;
+    padding: 0;
+    background: #f2f2f2;
+}

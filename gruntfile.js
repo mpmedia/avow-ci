@@ -6,25 +6,15 @@ module.exports = function (grunt) {
     // Get package JSON
     pkg: grunt.file.readJSON('package.json'),
 
-    // Ensure that dependencies are up-to-date
-    bower: {
-      install: {
-        options: {
-          install: true,
-          copy: false
-        }
-      }
-    },
-
     // JSBeautify
     jsbeautifier: {
       dev: {
         src: [
-          "public/src/js/**/*.js",
-          "!public/src/js/vendor/**/*.js"
+          'public/src/js/**/*.js',
+          '!public/src/js/vendor/**/*.js'
         ],
         options: {
-          config: ".jsbeautifyrc"
+          config: '.jsbeautifyrc'
         }
       }
     },
@@ -40,14 +30,25 @@ module.exports = function (grunt) {
           src: ['index.js', 'lib/**/*.js', 'public/src/js']
         }
       }
+    },
+
+    // Compass
+    compass: {
+      main: {
+        options: {
+          sassDir: 'public/css/sass',
+          cssDir: 'public/css',
+          outputStyle: 'compressed',
+        }
+      }
     }
 
   });
 
-  grunt.loadNpmTasks("grunt-contrib-jshint");
-  grunt.loadNpmTasks("grunt-jsbeautifier");
-  grunt.loadNpmTasks("grunt-bower-task");
+  grunt.loadNpmTasks('grunt-contrib-jshint');
+  grunt.loadNpmTasks('grunt-jsbeautifier');
+  grunt.loadNpmTasks('grunt-contrib-compass');
 
-  grunt.registerTask('default', ['bower', 'jsbeautifier', 'jshint']);
+  grunt.registerTask('default', ['jsbeautifier', 'jshint']);
 
 };

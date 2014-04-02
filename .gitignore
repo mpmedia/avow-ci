@@ -1,8 +1,5 @@
 .DS_Store
 
-public/dist/
-
-public/src/js/vendor/
 temp/
 logs/
 builds/

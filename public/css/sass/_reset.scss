@@ -1,0 +1,78 @@
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section, summary,
+time, mark, audio, video{margin:0;padding:0;border:0;outline:0;font-size:100%;font:inherit;vertical-align:baseline;}
+a{margin:0;padding:0;font-size:100%;vertical-align:baseline;background:transparent;}
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section{display:block;}
+body{line-height:1;}
+ol, ul{list-style:none;}
+blockquote, q{quotes:none;}
+blockquote:before, blockquote:after,
+q:before, q:after{content:'';content:none;}
+ins{text-decoration:none;}
+del{text-decoration:line-through;}
+table{border-collapse:collapse;border-spacing:0;}
+
+h1,h2,h3,h4 {
+    margin: 0;
+    font-weight: bold;
+}
+
+h1 { font-size: 3em; }
+h2 { font-size: 2.5em; }
+h2.failed { color: red; }
+h2.passed { color: green; }
+h3 { font-size: 2em; }
+h4 { font-size: 1.5em; margin-bottom: 10px; }
+
+a,a:link,a:visited {
+    display: inline;
+    cursor: pointer;
+    text-decoration: none;
+    color: #333;
+}
+a:hover,a:active { color: #000; }
+
+.hide { display: none; }
+.clear { clear: both; }
+.right { float: right; }
+.left { float: left; }
+
+hr { border: 0; height: 1px; margin: 1.5625em 0;
+    background-image: -webkit-linear-gradient(left, rgba(120,120,120,0), rgba(200,200,200,0.75), rgba(120,120,120,0));
+    background-image:    -moz-linear-gradient(left, rgba(120,120,120,0), rgba(200,200,200,0.75), rgba(120,120,120,0));
+    background-image:     -ms-linear-gradient(left, rgba(120,120,120,0), rgba(200,200,200,0.75), rgba(120,120,120,0));
+    background-image:      -o-linear-gradient(left, rgba(120,120,120,0), rgba(200,200,200,0.75), rgba(120,120,120,0));
+}
+
+strong {
+    font-weight: bold;
+}
+
+em {
+    font-style: italic;
+    color: #999;
+}
+
+i.fa {
+    padding: 0 .2em;
+    padding: 3px 5px;
+}
+
+a > i {
+    color: #999;
+    transition: .3s color;
+}
+
+a > i:hover {
+    color: #333;
+}
