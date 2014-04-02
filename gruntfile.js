@@ -40,65 +40,14 @@ module.exports = function (grunt) {
           src: ['index.js', 'lib/**/*.js', 'public/src/js']
         }
       }
-    },
-
-    // R.js
-    requirejs: {
-      main: {
-        options: {
-          name: "main",
-          baseUrl: "public/src/js/",
-          mainConfigFile: "public/src/js/main.js",
-          out: "public/dist/js/main.js",
-          optimize: "uglify",
-          logLevel: 0
-        }
-      }
-    },
-
-    copy: {
-      main: {
-        files: [
-          // CSS
-          {
-            expand: true,
-            cwd: "public/src/styles/",
-            src: ["**", "!public/src/styles/sass/**/*"],
-            dest: "public/dist/styles"
-          },
-          // Assets
-          {
-            expand: true,
-            cwd: "public/src/assets",
-            src: ["**"],
-            dest: "public/dist/assets"
-          },
-          // JS
-          {
-            expand: true,
-            cwd: "public/src/js",
-            src: ["**"],
-            dest: "public/dist/js"
-          },
-          // Individual files
-          {
-            expand: true,
-            cwd: "public/src/",
-            src: ["index.html"],
-            dest: "public/dist"
-          }
-        ]
-      }
     }
 
   });
 
   grunt.loadNpmTasks("grunt-contrib-jshint");
   grunt.loadNpmTasks("grunt-jsbeautifier");
-  grunt.loadNpmTasks("grunt-contrib-requirejs");
-  grunt.loadNpmTasks("grunt-contrib-copy");
   grunt.loadNpmTasks("grunt-bower-task");
 
-  grunt.registerTask('default', ['bower', 'jsbeautifier', 'jshint', 'copy', 'requirejs']);
+  grunt.registerTask('default', ['bower', 'jsbeautifier', 'jshint']);
 
 };

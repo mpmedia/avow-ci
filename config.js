@@ -4,7 +4,7 @@ var config = {
   // Environment configuration
   env: {
     // Public root
-    publicHTTP: 'public/src',
+    publicHTTP: 'public',
     // Port to run over
     port: 8181
   },
