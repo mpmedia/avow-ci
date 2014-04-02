@@ -17,7 +17,7 @@
                 Duration
             </th>
             <th class="icon">
-                Logs
+                Log
             </th>
         </tr>
     </thead>
@@ -25,7 +25,9 @@
     <tbody data-bind="foreach: builds">
         <tr>
             <td data-bind="attr: { class: statusClass }">
-                <i class="fa fa-circle"></i>
+                <a data-bind="attr: { href: url }">
+                    <i class="fa fa-circle"></i>
+                </a>
             </td>
             <td data-bind="text: start"></td>
             <td data-bind="text: duration"></td>
