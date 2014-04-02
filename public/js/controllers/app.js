@@ -38,6 +38,8 @@ define([
     routes: {
       // USER
       '/': 'user/login',
+      '/user/list': 'user/list',
+      '/user/create': 'user/create',
       // PROJECTS
       '/projects': 'project/list',
       '/projects/:name': 'project/view',

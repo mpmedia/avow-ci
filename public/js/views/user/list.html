@@ -1,0 +1,22 @@
+<button class="user-list-create" data-bind="click: create">Create User</button>
+
+<h2>Users</h2>
+
+<table class="datatable">
+    <thead>
+        <tr>
+            <th>Email</th>
+            <th class="icon">Delete</th>
+        </tr>
+    </thead>
+    <tbody data-bind="foreach: users">
+        <tr>
+            <td data-bind="text: email"></td>
+            <td>
+                <a data-bind="click: $root.deleteUser">
+                    <i class="fa fa-times"></i>
+                </a>
+            </td>
+        </tr>
+    </tbody>
+</table>

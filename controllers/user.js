@@ -103,6 +103,7 @@ module.exports = {
           if (data.length) {
             self.sendResponse(res, 'Email already in use');
           } else {
+            console.log(req.body);
             req.body.password = passwordHash.generate(req.body.password);
             self.data.users.insert(req.body, function (err, data) {
               self.sendResponse(res, err, data);
