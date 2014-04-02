@@ -67,6 +67,10 @@ define([
         dom.notification('error', 'Problem loading data');
       });
     },
+    
+    createProject: function () {
+      router.go('/projects/new/config');
+    },
 
     updateBuildStatus: function (data) {
       var project = ko.utils.arrayFirst(this.projects(), function (item) {

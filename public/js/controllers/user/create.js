@@ -8,7 +8,7 @@ define([
   'timestamp'
 ], function (ko, session, router, request, dom, timestamp) {
 
-  var list = {
+  var create = {
 
     // Set page title
     pageTitle: 'Create User',
@@ -68,6 +68,6 @@ define([
 
   };
 
-  return list;
+  return create;
 
 });

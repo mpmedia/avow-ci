@@ -40,6 +40,7 @@ define([
       '/': 'user/login',
       '/user/list': 'user/list',
       '/user/create': 'user/create',
+      '/user/password': 'user/password',
       // PROJECTS
       '/projects': 'project/list',
       '/projects/:name': 'project/view',

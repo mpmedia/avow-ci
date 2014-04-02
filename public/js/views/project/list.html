@@ -1,3 +1,5 @@
+<button class="project-list-create-btn" data-bind="click: createProject">New Project</button>
+
 <h2>Projects List</h2>
 
 <table class="datatable">
@@ -45,7 +47,7 @@
     <tbody>
         <tr>
             <td colspan="5" class="project-list-create">
-                <a href="/#projects/new/config">Create A Project &raquo;</a>
+                <a data-bind="click: createProject">Create A Project &raquo;</a>
             </td>
         </tr>
     </tbody>
