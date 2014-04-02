@@ -23,7 +23,7 @@ module.exports = {
   // Triggers a build process
   'POST': {
     controller: 'build',
-    fn: 'runBuild'
+    fn: 'processRunRequest'
   }
 
 };

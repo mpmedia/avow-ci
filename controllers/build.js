@@ -64,39 +64,59 @@ module.exports = {
     }
   },
 
-  // Run a build (POST)
-  runBuild: function (req, res) {
+  // Process manual run
+  processRunRequest: function (req, res) {
     var self = this;
-    // Find project
-    self.data.projects.find({ name: req.params[0] }, function (err, projectData) {
+    var query;
+
+    // Check request type (Github hook or manual)
+    if (req.params[0]) {
+      // Manual trigger
+      query = { name: req.params[0] };
+    } else {
+      // Github hook
+      var payload = JSON.parse(req.body.payload);
+      var repo = 'git@github.com:'+payload.repository.url.replace('https://github.com/','')+'.git';
+      var branch = payload.ref.replace('refs/heads/', '');
+      query = { repo: repo, branch: branch };
+    }
+
+    self.data.projects.find(query, function (err, projectData) {
       if (err) {
         // Data store error
-        self.sendResponse(res, err, projectData);
+        self.sendResponse(res, err, null);
       } else if (!projectData.length) {
         // No project found
         self.sendResponse(res, 'No project found', null);
       } else {
-        // Have project, insert new record for build
-        self.data.builds.insert({
-          project_id: projectData[0]._id.toString(),
-          start: + new Date()
-        }, function (err, data) {
-          if (err) {
-            // Data store error
-            self.sendResponse(res, err, data);
-          } else {
-            // Start runner with data
-            var build = new Runner({
-              project: projectData[0],
-              projectDB: self.data.projects,
-              build: data[0],
-              buildDB: self.data.builds,
-              buildSocket: self.sockets.builds
-            });
-            // Send response with the new build data
-            self.sendResponse(res, false, data);
-          }
+        // Trigger build
+        self.runBuild(projectData[0], res);
+      }
+    });
+  },
+
+  // Run a build (POST)
+  runBuild: function (project, res) {
+    var self = this;
+    // Insert new record for build
+    self.data.builds.insert({
+      project_id: project._id.toString(),
+      start: + new Date()
+    }, function (err, data) {
+      if (err) {
+        // Data store error
+        self.sendResponse(res, err, data);
+      } else {
+        // Start runner with data
+        var build = new Runner({
+          project: project,
+          projectDB: self.data.projects,
+          build: data[0],
+          buildDB: self.data.builds,
+          buildSocket: self.sockets.builds
         });
+        // Send response with the new build data
+        self.sendResponse(res, false, data);
       }
     });
   }
