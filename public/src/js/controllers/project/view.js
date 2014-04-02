@@ -1,3 +1,4 @@
+/* global io */
 define([
   'knockout',
   'session',
@@ -47,6 +48,16 @@ define([
         self.repo(project.data[0].repo);
         self.branch(project.data[0].branch);
         self.getBuilds();
+
+        // Watch update socket
+        io.connect('/api/builds/').on('update', function (data) {
+          // If socket matches project ID
+          if (data.project_id === self._id()) {
+            // Update the builds...
+            self.getBuilds();
+          }
+        });
+
       });
 
       reqProject.fail(function () {
@@ -56,15 +67,14 @@ define([
 
     getBuilds: function () {
       var self = this;
-
-      self.builds([]);
-
+      
       // Get builds
       var reqBuilds = request({
         url: '/api/build/project/' + this._id()
       });
 
       reqBuilds.done(function (builds) {
+        self.builds([]);
         for (var build in builds.data) {
           var curBuild = builds.data[build];
           curBuild.url = '#/projects/' + self.name() + '/build/' + curBuild._id;
@@ -94,7 +104,7 @@ define([
         return 'project-status--pass';
       case 1:
         return 'project-status--fail';
-      case 2:
+      default:
         return 'project-status--pending';
       }
     }

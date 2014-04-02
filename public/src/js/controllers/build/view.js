@@ -19,7 +19,7 @@ define([
     commit: ko.observable('No Commit Data'),
     config: ko.observable('No Config Data'),
     start: ko.observable(),
-    duration: ko.observable('Pending'),
+    duration: ko.observable('Building'),
     status: ko.observable(),
     log: ko.observable('Loading...'),
 
@@ -39,7 +39,7 @@ define([
       var self = this;
       self._id(id);
       self.project(project);
-      self.duration('Pending');
+      self.duration('Building');
 
       this.getData();
 
@@ -52,15 +52,9 @@ define([
         }
       });
 
-      // Watch log socket
-      io.connect('/api/builds/').on('log', function (data) {
-        // If build log socket is for current build
-        if (data.id === id) {
-          dom.appendBuildLog(data.data);
-        }
-      });
     },
 
+    // Get build and log data
     getData: function () {
       var self = this;
       // Request build data
@@ -90,6 +84,13 @@ define([
 
       reqLog.done(function (log) {
         self.log(log.data);
+        // Watch log socket
+        io.connect('/api/builds/').on('log', function (data) {
+          // If build log socket is for current build
+          if (data.id === self._id()) {
+            dom.appendBuildLog(data.data);
+          }
+        });
       });
 
       reqLog.fail(function () {
