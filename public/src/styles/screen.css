@@ -313,8 +313,8 @@
         font-weight: bold;
     }
 
-    .project-list-repo {
-        display: block;
+    .project-list-repo, .project-list-branch {
+        display: inline-block;
         font-size: 1em;
         color: #666;
         font-style: italic;
