@@ -19,3 +19,42 @@ body {
     padding: 0;
     background: #f2f2f2;
 }
+
+/* TABLES */
+
+.datatable {
+    border-collapse: separate;
+    width: 100%;
+    margin: 15px 0;
+    border-spacing: 0;
+    box-shadow: 0 5px 8px 0 rgba(0, 0, 0, .1);
+
+    th, td {
+       padding: 8px 10px 6px 10px;
+       border: 1px solid #ccc;
+       background: #fafafa;
+    }
+
+    th {
+       text-align: left;
+       font-weight: bold;
+    }
+
+    th.icon {
+        width: 30px
+    }
+
+    tr:first-child th:first-child {
+        border-top-left-radius: 3px;
+    }
+
+    tr:first-child th:last-child {
+        border-top-right-radius: 3px;
+    }
+
+    i, a>i {
+        display: block;
+        text-align: center;
+    }
+
+}

@@ -26,7 +26,8 @@
     "grunt-cli": "~0.1.13",
     "grunt-contrib-jshint": "~0.6.4",
     "grunt-jsbeautifier": "~0.2.0",
-    "grunt-contrib-compass": "~0.7.0"
+    "grunt-contrib-compass": "~0.7.0",
+    "grunt-contrib-watch": "~0.5.1"
   },
   "scripts": {
     "post_install": "grunt"

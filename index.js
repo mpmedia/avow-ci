@@ -118,3 +118,14 @@ modules.lib.stdout('output', 'PORT: ' + config.get('env.port'));
 if (process.env.NODE_ENV !== 'production') {
   modules.lib.stdout('title', 'LOGGING OUTPUT');
 }
+
+// If running dev, start watch
+if (process.env.NODE_ENV !== 'production') {
+  var cp = require('child_process');
+  var grunt = cp.spawn('grunt', ['--force', 'watch']);
+
+  grunt.stdout.on('data', function(data) {
+      // relay output to console
+      console.log('%s', data);
+  });
+}

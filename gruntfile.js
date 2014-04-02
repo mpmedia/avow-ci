@@ -41,6 +41,17 @@ module.exports = function (grunt) {
           outputStyle: 'compressed',
         }
       }
+    },
+    
+    // Watch
+    watch: {
+      ui: {
+        files: ['public/css/**/*'],
+        tasks: ['compass'],
+        options: {
+          spawn: false,
+        },
+      },
     }
 
   });
@@ -48,6 +59,7 @@ module.exports = function (grunt) {
   grunt.loadNpmTasks('grunt-contrib-jshint');
   grunt.loadNpmTasks('grunt-jsbeautifier');
   grunt.loadNpmTasks('grunt-contrib-compass');
+  grunt.loadNpmTasks('grunt-contrib-watch');
 
   grunt.registerTask('default', ['jsbeautifier', 'jshint']);
 
