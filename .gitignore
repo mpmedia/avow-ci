@@ -1,5 +1,7 @@
 .DS_Store
 
+db_conf.json
+
 temp/
 logs/
 builds/

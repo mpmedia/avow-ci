@@ -15,8 +15,19 @@ var modules = require('./lib/modules.js');
 var middleware = config.get('middleware');
 var settings = config.get('expressConfig') || [];
 var load = ['lib', 'adapters', 'components', 'controllers', 'models', 'api'];
+var fs = require('fs');
 
 var value, i, z;
+
+// Check for db config
+if (fs.existsSync('./db_conf.json')) {
+  var dbConf = JSON.parse(fs.readFileSync('./db_conf.json'));
+  console.log(dbConf);
+  config.set('db', dbConf);
+} else {
+  console.log('>> ERROR: No db_conf.json file.');
+}
+
 
 // Load all the modules
 // All of the modules are then accessible via /lib/modules.js, for example:

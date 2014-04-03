@@ -15,22 +15,6 @@ var config = {
   // Express logging
   expressLogging: 'short',
 
-  // Database store configuration
-  db: {
-
-    // Specify adapter to use
-    adapter: 'mongo',
-
-    // Adapter specific configuration
-    config: {
-      host: "mongodb://ds031278.mongolab.com:31278/avow",
-      database: "avow",
-      user: "avowjs",
-      pass: "avow1234567!"
-    }
-
-  },
-
   // CORS configuration
   cors: {
     origin: '*',
