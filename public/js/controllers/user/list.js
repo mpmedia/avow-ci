@@ -29,9 +29,9 @@ define([
 
     load: function () {
       var self = this;
-      
+
       self.users([]);
-      
+
       var req = request({
         url: '/api/user/'
       });
@@ -52,7 +52,25 @@ define([
     },
 
     deleteUser: function (user) {
-      console.log(user);
+      if (user._id === localStorage.getItem('id')) {
+        dom.notification('error', 'Cannot delete your own account');
+      } else {
+        var req = request({
+          url: 'api/user/' + user._id,
+          type: 'DELETE'
+        });
+
+        req.done(function () {
+          dom.notification('success', 'Account &apos;'+user.email+'&apos; has been deleted');
+          $('tr[data-id="'+user._id+'"]').fadeOut(200, function () {
+            $(this).remove();
+          });
+        });
+
+        req.fail(function () {
+          dom.notification('error', 'Could not delete account &apos;'+user.email+'&apos;');
+        });
+      }
     }
 
   };

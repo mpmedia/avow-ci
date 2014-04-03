@@ -10,7 +10,7 @@
         </tr>
     </thead>
     <tbody data-bind="foreach: users">
-        <tr>
+        <tr data-bind="attr: { 'data-id': _id }">
             <td data-bind="text: email"></td>
             <td>
                 <a data-bind="click: $root.deleteUser">
