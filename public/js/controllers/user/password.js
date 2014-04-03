@@ -36,7 +36,44 @@ define([
     },
 
     changePassword: function () {
+      var self = this;
+      // Check current password
+      var reqCur = request({
+        url: 'api/user/login/',
+        type: 'POST',
+        payload: {
+          email: localStorage.getItem('email'),
+          password: self.current_password()
+        }
+      });
 
+      // If current password works process changes
+      reqCur.done(function () {
+        if (self.new_password() === self.confirm_password()) {
+          var reqChange = request({
+            url: 'api/user/'+localStorage.getItem('id'),
+            type: 'PUT',
+            payload: {
+              password: self.new_password()
+            }
+          });
+
+          reqChange.done(function () {
+            dom.notification('success', 'Password successfully changed');
+            router.go('/projects');
+          });
+
+          reqChange.fail(function () {
+            dom.notification('error', 'Could not change password');
+          });
+        } else {
+          dom.notification('error', 'New passwords do not match');
+        }
+      });
+
+      reqCur.fail(function () {
+        dom.notification('error', 'Incorrect current password');
+      });
     },
 
     cancel: function () {

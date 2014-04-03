@@ -26,7 +26,19 @@ define([
       });
     },
 
+    load: function () {
+      this.email('');
+      this.password('');
+      if (localStorage.getItem('email') !== '') {
+        this.email(localStorage.getItem('email'));
+        $('.login-password').focus();
+      } else {
+        $('.login-email').focus();
+      }
+    },
+
     processLogin: function () {
+      var self = this;
       var req = request({
         url: '/api/user/login',
         type: 'POST',
@@ -36,7 +48,9 @@ define([
         }
       });
 
-      req.done(function () {
+      req.done(function (login) {
+        localStorage.setItem('email', self.email());
+        localStorage.setItem('id', login.data);
         router.go('/projects');
       });
 

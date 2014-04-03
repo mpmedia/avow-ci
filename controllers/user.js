@@ -63,7 +63,7 @@ module.exports = {
             req.session.user = true;
             res.send(200, {
               status: 'success',
-              data: ''
+              data: data[0]._id
             });
           } else {
             res.send(401, {
