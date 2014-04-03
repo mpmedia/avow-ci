@@ -1,6 +1,7 @@
 var async = require('async');
 var git = require('../lib/modules.js').components.git;
 var Processor = require('../lib/modules.js').components.processor;
+var Mailer = require('../lib/modules.js').components.mailer;
 var fsx = require('fs-extra');
 
 // Constructor
@@ -78,6 +79,8 @@ Runner.prototype.run = function () {
     if (err) {
       self.updateBuildData({ end: end, status: 1, error: { output: err } });
       self.updateProjectStatus(1);
+      // Send email (if config'd)
+      var mailer = new Mailer({ project: self.project_name, build: self.build });
       // Cleanup
       fsx.remove(self.temp);
     } else {

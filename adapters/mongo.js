@@ -1,5 +1,5 @@
 var mongoskin = require('mongoskin');
-var ObjectID = require("mongoskin").ObjectID
+var ObjectID = require("mongoskin").ObjectID;
 
 // DozerJS NeDB component
 var mongo = function (table, config) {

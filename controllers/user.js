@@ -9,6 +9,17 @@ module.exports = {
 
   // User socket namespace
   sockets: ['user'],
+  
+  // Get list
+  getList: function (cb) {
+    this.data.users.all(function (err, data) {
+      var list = [];
+      for(var i=0, z=data.length; i<z; i++) {
+        list.push(data[i].email);
+      }
+      cb(err, list);
+    });
+  },
 
   // Get user or user (GET)
   getUser: function (req, res) {

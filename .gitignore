@@ -1,6 +1,7 @@
 .DS_Store
 
 db_conf.json
+mail_conf.json
 
 temp/
 logs/

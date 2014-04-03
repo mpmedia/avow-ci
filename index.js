@@ -30,6 +30,13 @@ if (fs.existsSync('./db_conf.json')) {
   return;
 }
 
+// Check for mail config
+if (fs.existsSync('./mail_conf.json')) {
+  var mailConf = JSON.parse(fs.readFileSync('./mail_conf.json'));
+  config.set('mailer', mailConf);
+} else {
+  console.log(clc.yellowBright('WARNING: ') + 'No mail_conf.json available. Email service not available.');
+}
 
 // Load all the modules
 // All of the modules are then accessible via /lib/modules.js, for example:
