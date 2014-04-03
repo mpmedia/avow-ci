@@ -23,11 +23,11 @@ var Mailer = function (data) {
     // Set mailConf
     mailConf = config.get('mailer');
     // Get users
-    store.collection(table).find().toArray(function (err, data) {
+    store.collection(table).find().toArray(function (err, list) {
       if (!err) {
         var users = [];
-        for (var i=0, z=data.length; i<z; i++) {
-          users.push(data[i].email);
+        for (var i=0, z=list.length; i<z; i++) {
+          users.push(list[i].email);
         }
         // Append server from mailConf to data
         data.server = mailConf.server;
