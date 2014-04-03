@@ -42,6 +42,30 @@ This will create a user based on the email address and password provided
 npm run prod
 ```
 
+## Configuring Mail Service
+
+Avow has the ability to send email notifications to users when a build fails. To
+enable this capability you must create a `mail_conf.json` file in the root:
+
+```json
+{
+    "server": "[AVOW_SERVER]",
+    "host": "[SMTP_SERVER]",
+    "secureConnection": true,
+    "port": 465,
+    "auth": {
+        "user": "[SMTP_EMAIL]",
+        "pass": "[SMTP_PASSWORD]"
+    },
+    "maxConnections": 5,
+    "maxMessages": null
+}
+```
+
+*Note: the `AVOW_SERVER` refers to the FQDN/IP for your Avow instance. This is used
+to build return links from the outgoing email back to the failing build and should
+be formatted like: `http://yourserver.com:8181`.*
+
 ## Accessing the Web App
 
 The default port (which can be changed in `/config.js`) is `8181`, so when the
