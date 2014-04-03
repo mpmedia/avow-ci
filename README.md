@@ -13,7 +13,7 @@ and dev shops, specifically designed for JavaScript projects.
 1. After cloning or downloading the contents of the Avow system to your server run
 `npm install` to get all dependencies.
 
-*Note: If you're planning to run in dev mode (i.e. `node index.js`) you need to 
+*Note: If you're planning to run in dev mode (i.e. `node index.js`) you need to
 additionally run `npm install grunt-cli -g`.
 
 2. In the root of the directory create a file `db_conf.json`:
@@ -112,6 +112,10 @@ can simply use the server's `.ssh/id_rsa.pub` key for this (if it exists) or
 
 Once you have a deploy key simply add it to the repository in GitHub under the
 Settings >> Deploy Keys.
+
+Alternatively, if you are running multiple repos (not just multiple branches) it 
+may be easier to associate the server's pub-key with your Github account, or create 
+a Github account for your server which has access to the repos you will be adding.
 
 ## Running Builds
 
