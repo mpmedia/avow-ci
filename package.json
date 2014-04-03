@@ -30,6 +30,7 @@
     "grunt-contrib-watch": "~0.5.1"
   },
   "scripts": {
-    "post_install": "grunt"
+    "post_install": "grunt",
+    "prod": "NODE_ENV=production node index.js"
   }
 }

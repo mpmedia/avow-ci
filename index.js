@@ -16,16 +16,18 @@ var middleware = config.get('middleware');
 var settings = config.get('expressConfig') || [];
 var load = ['lib', 'adapters', 'components', 'controllers', 'models', 'api'];
 var fs = require('fs');
+var clc = require('cli-color');
 
 var value, i, z;
 
 // Check for db config
 if (fs.existsSync('./db_conf.json')) {
   var dbConf = JSON.parse(fs.readFileSync('./db_conf.json'));
-  console.log(dbConf);
   config.set('db', dbConf);
 } else {
-  console.log('>> ERROR: No db_conf.json file.');
+  console.log(clc.redBright('CONFIG ERROR'));
+  console.log(' >> No db_conf.json file.');
+  return;
 }
 
 
