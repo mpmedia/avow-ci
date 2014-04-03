@@ -13,6 +13,9 @@ and dev shops, specifically designed for JavaScript projects.
 1. After cloning or downloading the contents of the Avow system to your server run
 `npm install` to get all dependencies.
 
+*Note: If you're planning to run in dev mode (i.e. `node index.js`) you need to 
+additionally run `npm install grunt-cli -g`.
+
 2. In the root of the directory create a file `db_conf.json`:
 
 ```json
