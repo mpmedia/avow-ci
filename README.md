@@ -97,12 +97,16 @@ where the build can be monitored.
 
 ### GitHub WebHook:
 
-For the project to run whenever a commit is pushed to the repo + branch you can 
-add a webhook in GitHub under the Project Settings >> Webhooks & Services with the 
+For the project to run whenever a commit is pushed to the repo + branch you can
+add a webhook in GitHub under the Project Settings >> Webhooks & Services with the
 following settings:
 
 **Payload URL:** `http://yourserver.com:8181/api/build/`
 **Payload Version:** `application/vnd.github.v3+form`
 
-Once these settings are in place the system will automatically process incoming 
+Once these settings are in place the system will automatically process incoming
 webhook `POST`'s and execute a build.
+
+## License
+
+This software is released as-is, without warranty under the MIT-Style license.
