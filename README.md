@@ -44,7 +44,7 @@ npm run prod
 
 ## Accessing the Web App
 
-The default port (which can be changed in `/config.js` is `8181`, so when the
+The default port (which can be changed in `/config.js`) is `8181`, so when the
 server is running you can access the web app via `http://yourserver.com:8181`.
 
 You can then log in with the email address and password you created during installation.
@@ -101,8 +101,9 @@ For the project to run whenever a commit is pushed to the repo + branch you can
 add a webhook in GitHub under the Project Settings >> Webhooks & Services with the
 following settings:
 
-**Payload URL:** `http://yourserver.com:8181/api/build/`
-**Payload Version:** `application/vnd.github.v3+form`
+| **Payload URL**                         | **Payload Version**              |
+|-----------------------------------------|----------------------------------|
+| `http://yourserver.com:8181/api/build/` | `application/vnd.github.v3+form` |
 
 Once these settings are in place the system will automatically process incoming
 webhook `POST`'s and execute a build.
