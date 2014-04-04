@@ -13,7 +13,7 @@ define([
 
     notification: function (type, message) {
       var $notification = $('#notification');
-      $notification.addClass(type).html(message);
+      $notification.addClass(type).find('span').html(message);
       setTimeout(function () {
         $notification.removeClass(type);
       }, 3000);

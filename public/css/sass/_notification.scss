@@ -5,12 +5,13 @@
     left: 0;
     width: 100%;
     background: #1a1a1a;
-    color: #fff;
-    padding: 15px;
+    color: #000;
+    padding: 8px;
     text-align: center;
     text-shadow: none;
     opacity: 0;
     transition: .3s ease top, .3s ease opacity;
+    box-shadow: 0 4px 7px 0 rgba(0,0,0,.2);
 
     &.error, &.success {
         top: 0;
@@ -18,10 +19,18 @@
     }
 
     &.error {
-        border-bottom: 3px solid #ff0000;
+        background-color: #FFCC00;
+
+        i:before {
+            content: "\f12a";
+        }
     }
 
     &.success {
-        border-bottom: 3px solid #00ff00;
+        background-color: #2EB82E;
+
+        i:before {
+            content: "\f00c";
+        }
     }
 }
