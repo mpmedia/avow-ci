@@ -10,13 +10,13 @@ and dev shops, specifically designed for JavaScript projects.
 
 ## Installation
 
-1. After cloning or downloading the contents of the Avow system to your server run
+1.) After cloning or downloading the contents of the Avow system to your server run
 `npm install` to get all dependencies.
 
 *Note: If you're planning to run in dev mode (i.e. `node index.js`) you need to
 additionally run `npm install grunt-cli -g`.
 
-2. In the root of the directory create a file `db_conf.json`:
+2.) In the root of the directory create a file `db_conf.json`:
 
 ```json
 {
@@ -32,7 +32,7 @@ additionally run `npm install grunt-cli -g`.
 
 Replacing the `[VARIABLES]` with your Mongo connection information.
 
-3. Create a user by running the following command:
+3.) Create a user by running the following command:
 
 ```
 node adduser.js [user@email.com] [password]
@@ -40,7 +40,7 @@ node adduser.js [user@email.com] [password]
 
 This will create a user based on the email address and password provided
 
-4. Start the service:
+4.) Start the service:
 
 ```
 npm run prod
