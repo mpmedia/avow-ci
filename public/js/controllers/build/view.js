@@ -22,6 +22,7 @@ define([
     duration: ko.observable('Building'),
     status: ko.observable(),
     log: ko.observable('Loading...'),
+    socket: ko.observable(false),
 
     // Check if session exists
     before: function (fn) {
@@ -43,22 +44,30 @@ define([
 
       this.getData();
 
-      // Watch update socket
-      io.connect('/api/builds/').on('update', function (data) {
-        // If socket matches build ID and the status is not pending...
-        if (data.id === id) {
-          // Update the data...
-          self.getData();
-        }
-      });
-      
-      // Watch log socket
-      io.connect('/api/builds/').on('log', function (data) {
-        // If build log socket is for current build
-        if (data.id === self._id()) {
-          dom.appendBuildLog(data.data);
-        }
-      });
+      // Ensure socket isn't already bound
+      if (!this.socket()) {
+
+        // Watch update socket
+        io.connect('/api/builds/').on('update', function (data) {
+          // If socket matches build ID and the status is not pending...
+          if (data.id === id) {
+            // Update the data...
+            self.getData();
+          }
+        });
+
+        // Watch log socket
+        io.connect('/api/builds/').on('log', function (data) {
+          // If build log socket is for current build
+          if (data.id === self._id()) {
+            dom.appendBuildLog(data.data);
+          }
+        });
+
+        // Record that socket is bound for this session
+        this.socket(true);
+
+      }
 
     },
 
