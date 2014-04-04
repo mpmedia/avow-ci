@@ -5,13 +5,13 @@
     <label>Name</label>
     <div class="icon-input">
         <i class="fa fa-quote-right"></i>
-        <input data-bind="value: name, valueUpdate: 'afterkeydown', event: { blur: testName }">
+        <input placeholder="project-name" data-bind="value: name, valueUpdate: 'afterkeydown', event: { blur: testName }">
     </div>
 
     <label>Repo</label>
     <div class="icon-input">
         <i class="fa fa-github"></i>
-        <input data-bind="value: repo, valueUpdate: 'afterkeyup'">
+        <input placeholder="git@github.com:owner/repository.git" data-bind="value: repo, valueUpdate: 'afterkeyup'">
     </div>
 
     <label>Branch</label>
