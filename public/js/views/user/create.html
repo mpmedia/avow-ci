@@ -2,13 +2,22 @@
 
 <form data-bind="submit: processCreate">
     <label>Email</label>
-    <input placeholder="email@domain.com" data-bind="value: email">
+    <div class="icon-input">
+        <i class="fa fa-user"></i>
+        <input placeholder="email@domain.com" data-bind="value: email">
+    </div>
 
     <label>Password</label>
-    <input type="password" placeholder="password" data-bind="value: password">
+    <div class="icon-input">
+        <i class="fa fa-key"></i>
+        <input type="password" placeholder="password" data-bind="value: password">
+    </div>
 
     <label>Confirm Password</label>
-    <input type="password" placeholder="confirm password" data-bind="value: confirm_password">
+    <div class="icon-input">
+        <i class="fa fa-key"></i>
+        <input type="password" placeholder="confirm password" data-bind="value: confirm_password">
+    </div>
 
     <button class="btn-left">Create</button>
     <button class="btn-right" data-bind="click: cancel">Cancel</button>

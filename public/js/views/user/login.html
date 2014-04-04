@@ -1,9 +1,16 @@
 <form class="login-form" data-bind="submit: processLogin">
     <label>Email</label>
-    <input class="login-email" placeholder="you@email.com" data-bind="value: email">
+
+    <div class="icon-input">
+        <i class="fa fa-user"></i>
+        <input class="login-email" placeholder="you@email.com" data-bind="value: email">
+    </div>
 
     <label>Password</label>
-    <input class="login-password" type="password" placeholder="password" data-bind="value: password">
+    <div class="icon-input">
+        <i class="fa fa-key"></i>
+        <input class="login-password" type="password" placeholder="password" data-bind="value: password">
+    </div>
 
     <button class="btn">Login</button>
 </form>

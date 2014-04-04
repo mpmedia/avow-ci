@@ -3,18 +3,30 @@
 <form data-bind="submit: saveProject">
 
     <label>Name</label>
-    <input data-bind="value: name, valueUpdate: 'afterkeydown', event: { blur: testName }">
+    <div class="icon-input">
+        <i class="fa fa-quote-right"></i>
+        <input data-bind="value: name, valueUpdate: 'afterkeydown', event: { blur: testName }">
+    </div>
 
     <label>Repo</label>
-    <input data-bind="value: repo, valueUpdate: 'afterkeyup'">
+    <div class="icon-input">
+        <i class="fa fa-github"></i>
+        <input data-bind="value: repo, valueUpdate: 'afterkeyup'">
+    </div>
 
     <label>Branch</label>
     <!-- ko if: availableBranches().length -->
-    <select data-bind="options: availableBranches, value: branch, valueAllowUnset: true"></select>
+    <div class="icon-input">
+        <i class="fa fa-code-fork"></i>
+        <select data-bind="options: availableBranches, value: branch, valueAllowUnset: true"></select>
+    </div>
     <!-- /ko -->
 
     <!-- ko ifnot: availableBranches().length -->
-    <input data-bind="value: branch">
+    <div class="icon-input">
+        <i class="fa fa-code-fork"></i>
+        <input data-bind="value: branch">
+    </div>
     <!-- /ko -->
 
     <button class="btn-left">Save</button>
