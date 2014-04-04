@@ -2,22 +2,26 @@
 
 <header>
 
-    <ul class="app-nav" data-bind="visible: loggedIn">
-        <li><a href="#/projects">Projects</a></li>
-        <li><a href="#/user/list">Users</a></li>
-        <li><a href="#/user/password">Password</a></li>
-        <li><a data-bind="click: logoutUser">Logout</a></li>
-    </ul>
+    <div class="container">
+
+        <ul class="app-nav" data-bind="visible: loggedIn">
+            <li><a href="#/projects">Projects</a></li>
+            <li><a href="#/user/list">Users</a></li>
+            <li><a href="#/user/password">Password</a></li>
+            <li><a data-bind="click: logoutUser">Logout</a></li>
+        </ul>
     
-    <!-- ko if: loggedIn -->
-    <a href="#/projects">
+        <!-- ko if: loggedIn -->
+        <a href="#/projects">
+            <img id="logo" title="Avow CI" src="assets/images/avow-logo.gif">
+        </a>
+        <!-- /ko -->
+    
+        <!-- ko ifnot: loggedIn -->
         <img id="logo" title="Avow CI" src="assets/images/avow-logo.gif">
-    </a>
-    <!-- /ko -->
+        <!-- /ko -->
     
-    <!-- ko ifnot: loggedIn -->
-    <img id="logo" title="Avow CI" src="assets/images/avow-logo.gif">
-    <!-- /ko -->
+    </div>
 
 </header>
 

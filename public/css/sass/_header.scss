@@ -8,29 +8,35 @@ header {
         text-align: left;
     }
     
-    .app-nav {
-        display: block;
-        float: right;
-        margin: 0;
-        padding: 0;
-    }
-
-    .app-nav li {
-        display: inline-block;
-        margin: 0;
-        padding: 0;
-        list-style: none;
-    }
-
-    .app-nav li a {
-        display: inline-block;
-        padding: 3px 10px;
-        border-left: 1px solid #ccc;
-        color: #fff;
-    }
-
-    .app-nav li:first-of-type a {
-        border-left: none;
+    .container {
+        max-width: 1000px;
+        margin: 0 auto;
+        
+        .app-nav {
+            display: block;
+            float: right;
+            margin: 0;
+            padding: 0;
+        }
+    
+        .app-nav li {
+            display: inline-block;
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+    
+        .app-nav li a {
+            display: inline-block;
+            padding: 3px 10px;
+            border-left: 1px solid #ccc;
+            color: #fff;
+        }
+    
+        .app-nav li:first-of-type a {
+            border-left: none;
+        }
+        
     }
 }
 

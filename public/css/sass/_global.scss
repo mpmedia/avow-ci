@@ -56,10 +56,11 @@ h3 {
 
 #viewContainer {
     padding: 20px;
-    margin: 20px;
+    margin: 20px auto;
     background: #fff;
-    border-radius: 3px;
+    border-radius: 4px;
     border: 1px solid #ccc;
+    max-width: 1000px;
 }
 
 body.login {
