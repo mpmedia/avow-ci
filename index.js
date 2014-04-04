@@ -65,7 +65,7 @@ app.use(express.cookieParser());
 app.use(express.cookieSession({
   secret: config.get('secret'),
   cookie: {
-    maxAge: 60 * 60 * 1000
+    maxAge: 1209600000
   }
 }));
 app.use(express.json());
