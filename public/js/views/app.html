@@ -8,9 +8,16 @@
         <li><a href="#/user/password">Password</a></li>
         <li><a data-bind="click: logoutUser">Logout</a></li>
     </ul>
-
-
+    
+    <!-- ko if: loggedIn -->
+    <a href="#/projects">
+        <img id="logo" title="Avow CI" src="assets/images/avow-logo.gif">
+    </a>
+    <!-- /ko -->
+    
+    <!-- ko ifnot: loggedIn -->
     <img id="logo" title="Avow CI" src="assets/images/avow-logo.gif">
+    <!-- /ko -->
 
 </header>
 
