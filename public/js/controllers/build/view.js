@@ -51,6 +51,14 @@ define([
           self.getData();
         }
       });
+      
+      // Watch log socket
+      io.connect('/api/builds/').on('log', function (data) {
+        // If build log socket is for current build
+        if (data.id === self._id()) {
+          dom.appendBuildLog(data.data);
+        }
+      });
 
     },
 
@@ -84,13 +92,6 @@ define([
 
       reqLog.done(function (log) {
         self.log(log.data);
-        // Watch log socket
-        io.connect('/api/builds/').on('log', function (data) {
-          // If build log socket is for current build
-          if (data.id === self._id()) {
-            dom.appendBuildLog(data.data);
-          }
-        });
       });
 
       reqLog.fail(function () {
