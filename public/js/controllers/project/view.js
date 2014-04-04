@@ -83,6 +83,11 @@ define([
           } else {
             curBuild.duration = 'N/A';
           }
+          if (curBuild.hasOwnProperty('commit')) {
+            curBuild.commitmsg = curBuild.commit.message.substr(0, 35) + '&hellip;';
+          } else {
+            curBuild.commitmsg = 'NO COMMIT MESSAGE';
+          }
           curBuild.start = timestamp.common(curBuild.start);
           curBuild.statusClass = self.setStatusClass(curBuild.status);
           self.builds.push(curBuild);

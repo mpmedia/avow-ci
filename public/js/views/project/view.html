@@ -29,7 +29,9 @@
                     <i class="fa"></i>
                 </a>
             </td>
-            <td data-bind="text: start"></td>
+            <td>
+                <span data-bind="text: start"></span>: <span class="project-view-commit-msg" data-bind="html: commitmsg"></span>
+            </td>
             <td data-bind="text: duration"></td>
             <td>
                 <a data-bind="attr: { href: url }">
