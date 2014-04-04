@@ -72,10 +72,11 @@ body.login {
 /* TABLES */
 
 .datatable {
-    border-collapse: collapse;
+    border-collapse: separate;
     width: 100%;
     margin: 15px 0;
     border-spacing: 0;
+    border-radius: 4px;
 
     th, td {
        padding: 10px 15px;
@@ -85,8 +86,9 @@ body.login {
 
     th {
        text-align: left;
-       background-color: #9c0200;
+       background-color: #5C5C5C;
        color: #fff;
+       border-color: #424242;
     }
 
     th.icon {
@@ -94,11 +96,11 @@ body.login {
     }
 
     tr:first-child th:first-child {
-        border-top-left-radius: 3px;
+        border-top-left-radius: 4px;
     }
 
     tr:first-child th:last-child {
-        border-top-right-radius: 3px;
+        border-top-right-radius: 4px;
     }
 
     i, a>i {
