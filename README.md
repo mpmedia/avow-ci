@@ -1,5 +1,6 @@
 <img src="public/assets/images/avow-bar.png" width="100%">
 
+### Simple. Open. Continuous Integration.
 
 <img align="right" src="avow-demo.gif">
 
