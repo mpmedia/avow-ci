@@ -1,7 +1,7 @@
 ![Avow-CI](public/assets/images/avow-bar.png)
 
 
-<img align="right" src="avow-demo.gif">
+<img width="100%" align="right" src="avow-demo.gif">
 
 A simple yet powerful open-source CI system for individual developers, small teams
 and dev shops, specifically designed for JavaScript projects.
