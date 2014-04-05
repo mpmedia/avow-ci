@@ -1,6 +1,6 @@
-# Avow-CI
-
 <img align="right" src="avow-demo.gif">
+
+# Avow-CI
 
 A simple yet powerful open-source CI system for individual developers, small teams
 and dev shops, specifically designed for JavaScript projects.
