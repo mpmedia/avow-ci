@@ -1,6 +1,6 @@
 header {
     background-color: #9c0200;
-    padding: 30px;
+    padding: 0;
     text-align: center;
     transition: .3s ease text-align;
 
@@ -10,6 +10,7 @@ header {
     
     .container {
         max-width: 1000px;
+        padding: 30px;
         margin: 0 auto;
         
         .app-nav {

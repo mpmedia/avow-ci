@@ -3,6 +3,8 @@
 A simple yet powerful open-source CI system for individual developers, small teams
 and dev shops, specifically designed for JavaScript projects.
 
+![avow-screens](avow-demo.gif)
+
 ## Requirements
 
 * [NodeJS](http://nodejs.org) v.0.9.0 (or better)
