@@ -1,12 +1,13 @@
-# Avow-CI
+![Avow-CI](public/assets/images/avow-bar.png)
+
 
 <img align="right" src="avow-demo.gif">
 
 A simple yet powerful open-source CI system for individual developers, small teams
 and dev shops, specifically designed for JavaScript projects.
 
-Avow is built for customization - creating continuous integration (and deployment) 
-that fits your specific need. It's easy to hack on and makes it simple to crete 
+Avow is built for customization - creating continuous integration (and deployment)
+that fits your specific need. It's easy to hack on and makes it simple to crete
 solutions that fit your needs.
 
 ## Requirements
