@@ -1,9 +1,9 @@
 # Avow-CI
 
+<img align="right" src="avow-demo.gif">
+
 A simple yet powerful open-source CI system for individual developers, small teams
 and dev shops, specifically designed for JavaScript projects.
-
-![avow-screens](avow-demo.gif)
 
 ## Requirements
 
@@ -115,8 +115,8 @@ can simply use the server's `.ssh/id_rsa.pub` key for this (if it exists) or
 Once you have a deploy key simply add it to the repository in GitHub under the
 Settings >> Deploy Keys.
 
-Alternatively, if you are running multiple repos (not just multiple branches) it 
-may be easier to associate the server's pub-key with your Github account, or create 
+Alternatively, if you are running multiple repos (not just multiple branches) it
+may be easier to associate the server's pub-key with your Github account, or create
 a Github account for your server which has access to the repos you will be adding.
 
 ## Running Builds
